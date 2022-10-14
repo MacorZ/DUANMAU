@@ -149,7 +149,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
 
         jButton7.setText("Xóa");
 
-        jButton8.setText("Delete");
+        jButton8.setText("Reset");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

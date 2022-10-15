@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
@@ -23,12 +24,13 @@ import org.hibernate.annotations.Nationalized;
 @Entity
 @Table(name = "CuaHang")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CuaHang implements Serializable{
+public class CuaHang implements Serializable, GetObject {
 
     @Id
-    @Column(name = "Id", nullable = false,columnDefinition="uniqueidentifier")
+    @Column(name = "Id", nullable = false, columnDefinition = "uniqueidentifier")
     @GenericGenerator(name = "generator", strategy = "guid", parameters = {})
     @GeneratedValue(generator = "generator")
     private String id;
@@ -45,4 +47,11 @@ public class CuaHang implements Serializable{
     private String thanhPho;
     @Column(name = "QuocGia")
     private String quocGia;
+
+    @Override
+    public Object[] getObj(int i) {
+        return new Object[]{
+            i, ma, ten, diaChi, thanhPho, quocGia
+        };
+    }
 }

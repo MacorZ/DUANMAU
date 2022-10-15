@@ -8,6 +8,7 @@ import com.mycompany.duanmaujava.DomainModels.CuaHang;
 import com.mycompany.duanmaujava.Repositories.CuaHangRepository;
 import com.mycompany.duanmaujava.Repositories.impl.CuaHangRepositorIpml;
 import com.mycompany.duanmaujava.Services.CuaHangService;
+import com.mycompany.duanmaujava.ViewModels.ViewModelConvert.ConvertViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.CuaHangViewModel;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class CuaHangServiceImpl implements CuaHangService {
     @Override
     public List<CuaHangViewModel> getList() {
         return CUA_HANG_REPOSITORY.getList().stream().map(t
-                -> new CuaHangViewModel(t.getId(), t.getMa(), t.getTen(), t.getDiaChi(), t.getThanhPho(), t.getQuocGia())).toList();
+                -> ConvertViewModel.getCuaHangViewModel(t)).toList();
     }
 
     @Override
@@ -35,9 +36,7 @@ public class CuaHangServiceImpl implements CuaHangService {
         if (!CUA_HANG_REPOSITORY.checkSave(cuaHangViewModel.getMa())) {
             return "Mã đã tồn tại";
         }
-        return CUA_HANG_REPOSITORY.save(CuaHang.builder().ma(cuaHangViewModel.getMa())
-                .ten(cuaHangViewModel.getTen()).diaChi(cuaHangViewModel.getDiaChi()).
-                thanhPho(cuaHangViewModel.getThanhPho()).quocGia(cuaHangViewModel.getQuocGia()).build()) ? "" : "Thêm thất bại";
+        return CUA_HANG_REPOSITORY.save(ConvertViewModel.getCuaHang(cuaHangViewModel)) ? "" : "Thêm thất bại";
     }
 
     @Override
@@ -45,9 +44,7 @@ public class CuaHangServiceImpl implements CuaHangService {
         if (!CUA_HANG_REPOSITORY.checkSave(cuaHangViewModel.getMa())) {
             return "Mã đã tồn tại";
         }
-        return CUA_HANG_REPOSITORY.save(CuaHang.builder().ma(cuaHangViewModel.getMa())
-                .ten(cuaHangViewModel.getTen()).diaChi(cuaHangViewModel.getDiaChi()).
-                thanhPho(cuaHangViewModel.getThanhPho()).quocGia(cuaHangViewModel.getQuocGia()).id(cuaHangViewModel.getId()).build()) ? "" : "Cập nhật thất bại";
+        return CUA_HANG_REPOSITORY.update(ConvertViewModel.getCuaHang(cuaHangViewModel)) ? "" : "Cập nhật thất bại";
     }
 
     @Override
@@ -55,9 +52,7 @@ public class CuaHangServiceImpl implements CuaHangService {
         if (!CUA_HANG_REPOSITORY.checkDelete(cuaHangViewModel.getId())) {
             return "Không được xóa vì đã có trong thông tin nhân viên";
         }
-        return CUA_HANG_REPOSITORY.delete(CuaHang.builder().ma(cuaHangViewModel.getMa())
-                .ten(cuaHangViewModel.getTen()).diaChi(cuaHangViewModel.getDiaChi()).
-                thanhPho(cuaHangViewModel.getThanhPho()).quocGia(cuaHangViewModel.getQuocGia()).id(cuaHangViewModel.getId()).build()) ? "" : "Xóa thất bại";
+        return CUA_HANG_REPOSITORY.delete(ConvertViewModel.getCuaHang(cuaHangViewModel)) ? "" : "Xóa thất bại";
     }
 
 }

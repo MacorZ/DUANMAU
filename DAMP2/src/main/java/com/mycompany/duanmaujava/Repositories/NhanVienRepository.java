@@ -13,14 +13,22 @@ import java.util.List;
  */
 public interface NhanVienRepository {
 
-    List<NhanVien> getAll();
+    List<NhanVien> getList();
 
-    NhanVien getOne(NhanVien t);
+    NhanVien getOneById(String id);
 
-    NhanVien save(NhanVien t);
+    NhanVien getOneByMa(String ma);
 
-    NhanVien update(NhanVien t);
+    boolean save(NhanVien t);
+
+    boolean update(NhanVien t);
 
     boolean delete(NhanVien t);
+
+    boolean checkSave(String ma);
+
+    boolean checkUpdate(String ma, String id);
+
+    boolean checkDelete(String id);
 
 }

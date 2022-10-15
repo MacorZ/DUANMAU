@@ -5,6 +5,7 @@
 package com.mycompany.duanmaujava.Services;
 
 import com.mycompany.duanmaujava.DomainModels.NhanVien;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.NhanVienViewModel;
 import java.util.List;
 
 /**
@@ -13,9 +14,15 @@ import java.util.List;
  */
 public interface NhanVienService {
 
-    List<NhanVien> getAll();
+    List<NhanVienViewModel> getList();
 
-    String save(NhanVien t);
+    String save(NhanVienViewModel t);
 
-    NhanVien getOne(NhanVien t);
+    String update(NhanVienViewModel t);
+
+    String delete(NhanVienViewModel t);
+
+    NhanVienViewModel getOneById(String id);
+    
+    NhanVienViewModel getOneByMa(String id);
 }

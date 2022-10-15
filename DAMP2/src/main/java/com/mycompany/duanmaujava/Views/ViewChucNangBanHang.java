@@ -19,6 +19,7 @@ import com.mycompany.duanmaujava.Services.impl.HoaDonChiTietServiceImpl;
 import com.mycompany.duanmaujava.Utilities.Enums.TrangThaiHoaDon;
 import com.mycompany.duanmaujava.Utilities.MaTuSinh;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonViewModel;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.NhanVienViewModel;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -448,7 +449,7 @@ public class ViewChucNangBanHang extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        NhanVien nhanVien = NHAN_VIEN_SERVICE.getOne(NhanVien.builder().ma("NV01").build());
+        NhanVienViewModel nhanVien = NHAN_VIEN_SERVICE.getOneByMa("NV01");
         hoaDon = HoaDon.builder().ma(
                 MaTuSinh.genMaTuSinh("HD")).ngayTao(new Date()).diaChi("HN").nhanVien(nhanVien)
                 .tinhTrang(TrangThaiHoaDon.CHO_THANH_TOAN).build();

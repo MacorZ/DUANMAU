@@ -19,7 +19,7 @@ import com.mycompany.duanmaujava.DomainModels.GetObject;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class SanPhamDaChonResponse implements GetObject {
+public class SanPhamDaChonViewModel implements GetObject {
 
     private String id;
     private String ma;

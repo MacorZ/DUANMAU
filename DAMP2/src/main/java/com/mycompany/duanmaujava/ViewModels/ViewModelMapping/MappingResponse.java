@@ -5,8 +5,8 @@
 package com.mycompany.duanmaujava.ViewModels.ViewModelMapping;
 
 import com.mycompany.duanmaujava.DomainModels.ChiTietSanPham;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChiTietSanPhamResponse;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonResponse;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChiTietSanPhamViewModel;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonViewModel;
 
 /**
  *
@@ -14,8 +14,8 @@ import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonRespons
  */
 public class MappingResponse {
 
-    public static SanPhamDaChonResponse getSanPhamDaChonReponse(ChiTietSanPham chiTietSanPham) {
-        return SanPhamDaChonResponse.builder().id(chiTietSanPham.getId()).ma(chiTietSanPham.getSanPham().getMa()).ten(chiTietSanPham.getSanPham().getTen())
+    public static SanPhamDaChonViewModel getSanPhamDaChonReponse(ChiTietSanPham chiTietSanPham) {
+        return SanPhamDaChonViewModel.builder().id(chiTietSanPham.getId()).ma(chiTietSanPham.getSanPham().getMa()).ten(chiTietSanPham.getSanPham().getTen())
                 .donGia(chiTietSanPham.getGiaBan()).build();
     }
 

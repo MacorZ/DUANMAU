@@ -15,7 +15,7 @@ import com.mycompany.duanmaujava.Repositories.impl.HoaDonChiTietRepositoryImpl;
 import com.mycompany.duanmaujava.Repositories.impl.HoaDonRepositoryImpl;
 import com.mycompany.duanmaujava.Services.ChiTietHoaDonService;
 import com.mycompany.duanmaujava.Utilities.Enums.TrangThaiHoaDon;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonResponse;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonViewModel;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,7 +67,7 @@ public class HoaDonChiTietServiceImpl implements ChiTietHoaDonService {
     }
 
     @Override
-    public String saveAll(String maHoaDon, LinkedHashMap<String, SanPhamDaChonResponse> listSP) {
+    public String saveAll(String maHoaDon, LinkedHashMap<String, SanPhamDaChonViewModel> listSP) {
         HoaDon hoaDon = REPO_HD.getOneByMa(maHoaDon);
         listSP.forEach((t, u) -> {
             ChiTietSanPham chiTietSanPham = REPO_SP.getOne(ChiTietSanPham.builder().id(t).build());
@@ -83,17 +83,17 @@ public class HoaDonChiTietServiceImpl implements ChiTietHoaDonService {
     }
 
     @Override
-    public LinkedHashMap<String, SanPhamDaChonResponse> getSanPhamDaChonByMaHD(String id) {
+    public LinkedHashMap<String, SanPhamDaChonViewModel> getSanPhamDaChonByMaHD(String id) {
 
-        Map<String, SanPhamDaChonResponse> map = REPO_HDCT.getSanPhamDaChonByMaHD(id)
-                .stream().collect(Collectors.toMap(SanPhamDaChonResponse::getId, Function.identity()));
+        Map<String, SanPhamDaChonViewModel> map = REPO_HDCT.getSanPhamDaChonByMaHD(id)
+                .stream().collect(Collectors.toMap(SanPhamDaChonViewModel::getId, Function.identity()));
         return new LinkedHashMap<>(map);
 
     }
 
     public static void main(String[] args) {
         ChiTietHoaDonService cthds = new HoaDonChiTietServiceImpl();
-        LinkedHashMap<String, SanPhamDaChonResponse>  hashMap = cthds.getSanPhamDaChonByMaHD("HD202210924");
+        LinkedHashMap<String, SanPhamDaChonViewModel>  hashMap = cthds.getSanPhamDaChonByMaHD("HD202210924");
         System.out.println(hashMap);
     }
 }

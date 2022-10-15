@@ -6,7 +6,7 @@ package com.mycompany.duanmaujava.Services;
 
 import com.mycompany.duanmaujava.DomainModels.HoaDon;
 import com.mycompany.duanmaujava.Utilities.Enums.TrangThaiHoaDon;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonReponse;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonViewModel;
 import java.util.List;
 
 /**
@@ -15,12 +15,12 @@ import java.util.List;
  */
 public interface HoaDonService {
 
-    List<HoaDonReponse> getAll();
+    List<HoaDonViewModel> getAll();
 
     String save(HoaDon t);
 
     HoaDon getOne(HoaDon t);
 
-    List<HoaDonReponse> getAllByTrangThai(TrangThaiHoaDon trangThaiHoaDon);
+    List<HoaDonViewModel> getAllByTrangThai(TrangThaiHoaDon trangThaiHoaDon);
 
 }

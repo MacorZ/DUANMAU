@@ -5,7 +5,7 @@
 package com.mycompany.duanmaujava.Repositories.impl;
 
 import com.mycompany.duanmaujava.DomainModels.ChiTietSanPham;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChiTietSanPhamResponse;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChiTietSanPhamViewModel;
 import com.mycompany.duanmaujava.Repositories.ChiTietSanPhamRepository;
 import com.mycompany.duanmaujava.Utilities.hibernateUtil;
 import java.util.List;
@@ -20,7 +20,7 @@ import org.hibernate.Transaction;
 public class ChiTietSanPhamRepositoryImpl implements ChiTietSanPhamRepository {
 
     @Override
-    public List<ChiTietSanPhamResponse> getAll() {
+    public List<ChiTietSanPhamViewModel> getAll() {
         try ( Session session = hibernateUtil.getFACTORY().openSession();) {
             String hql = """
                    select new com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChiTietSanPhamResponse(

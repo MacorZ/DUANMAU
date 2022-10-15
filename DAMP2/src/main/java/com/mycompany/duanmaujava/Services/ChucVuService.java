@@ -5,6 +5,7 @@
 package com.mycompany.duanmaujava.Services;
 
 import com.mycompany.duanmaujava.DomainModels.ChucVu;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChucVuViewModel;
 import java.util.List;
 
 /**
@@ -13,13 +14,13 @@ import java.util.List;
  */
 public interface ChucVuService {
 
-    List<ChucVu> getList();
+    List<ChucVuViewModel> getList();
 
-    ChucVu getOneById(String id);
+    ChucVuViewModel getOneById(String id);
 
-    String save(ChucVu chucVu);
+    String save(ChucVuViewModel chucVu);
 
-    String update(ChucVu chucVu);
+    String update(ChucVuViewModel chucVu);
 
-    String delete(ChucVu chucVu);
+    String delete(ChucVuViewModel chucVu);
 }

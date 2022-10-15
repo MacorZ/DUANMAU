@@ -27,7 +27,7 @@ import org.hibernate.annotations.Nationalized;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChucVu implements Serializable, GetObject {
+public class ChucVu implements Serializable{
 
     @Id
     @Column(name = "Id", nullable = false, columnDefinition = "uniqueidentifier")
@@ -39,11 +39,4 @@ public class ChucVu implements Serializable, GetObject {
     @Column(name = "Ten")
     @Nationalized
     private String ten;
-
-    @Override
-    public Object[] getObj(int i) {
-        return new Object[]{
-            i, ma, ten
-        };
-    }
 }

@@ -4,13 +4,12 @@
  */
 package com.mycompany.duanmaujava.Views;
 
-import com.mycompany.duanmaujava.DomainModels.ChucVu;
-import com.mycompany.duanmaujava.DomainModels.CuaHang;
 import com.mycompany.duanmaujava.Services.ChucVuService;
 import com.mycompany.duanmaujava.Services.CuaHangService;
 import com.mycompany.duanmaujava.Services.impl.ChucVuServiceImpl;
 import com.mycompany.duanmaujava.Services.impl.CuaHangServiceImpl;
 import com.mycompany.duanmaujava.Utilities.Validate;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChucVuViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.CuaHangViewModel;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,13 +27,14 @@ public class QuanLyThongTinNhanVien extends javax.swing.JFrame {
      */
     private static final ChucVuService CHUC_VU_SERVICE = new ChucVuServiceImpl();
     private static final CuaHangService CUA_HANG_SERVICE = new CuaHangServiceImpl();
+    private Lis
     private List<CuaHangViewModel> listCuaHang = new ArrayList<>();
-    private List<ChucVu> listChucVu = new ArrayList<>();
+    private List<ChucVuViewModel> listChucVu = new ArrayList<>();
     private DefaultTableModel modelViewCuaHang;
-    private String idCuaHang;
-    private int checkCuaHang;
     private DefaultTableModel modelViewChucVu;
+    private String idCuaHang;
     private String idChucVu;
+    private int checkCuaHang;
     private int checkchucVu;
 
     public QuanLyThongTinNhanVien() {
@@ -436,8 +436,18 @@ public class QuanLyThongTinNhanVien extends javax.swing.JFrame {
         });
 
         btnViewCuaHangDelete.setText("Xóa");
+        btnViewCuaHangDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewCuaHangDeleteActionPerformed(evt);
+            }
+        });
 
         btnViewCuaHangReset.setText("Reset");
+        btnViewCuaHangReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewCuaHangResetActionPerformed(evt);
+            }
+        });
 
         tblCuaHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -688,7 +698,7 @@ public class QuanLyThongTinNhanVien extends javax.swing.JFrame {
 
     private void btnViewChucVuAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewChucVuAddActionPerformed
         // TODO add your handling code here:
-        ChucVu chucVu = insertDataChucVu();
+        ChucVuViewModel chucVu = insertDataChucVu();
         if (chucVu == null) {
             return;
         }
@@ -711,7 +721,7 @@ public class QuanLyThongTinNhanVien extends javax.swing.JFrame {
 
     private void btnViewChucVuUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewChucVuUpdateActionPerformed
         // TODO add your handling code here:
-        ChucVu chucVu = insertDataChucVu();
+        ChucVuViewModel chucVu = insertDataChucVu();
         if (chucVu == null) {
             return;
         }
@@ -763,8 +773,27 @@ public class QuanLyThongTinNhanVien extends javax.swing.JFrame {
         listCuaHang = CUA_HANG_SERVICE.getList();
         getTableCuaHang(listCuaHang);
         resetFormCuaHang();
-        JOptionPane.showMessageDialog(rootPane, "Cạp nhật thành công");
+        JOptionPane.showMessageDialog(rootPane, "Cập nhật thành công");
     }//GEN-LAST:event_btnViewCuaHangUpdateActionPerformed
+
+    private void btnViewCuaHangResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCuaHangResetActionPerformed
+        // TODO add your handling code here:
+        resetFormCuaHang();
+    }//GEN-LAST:event_btnViewCuaHangResetActionPerformed
+
+    private void btnViewCuaHangDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCuaHangDeleteActionPerformed
+        // TODO add your handling code here:
+        CuaHangViewModel cuaHangViewModel = listCuaHang.get(checkCuaHang);
+        String check = CUA_HANG_SERVICE.delete(cuaHangViewModel);
+        if (!check.equals("")) {
+            jlViewCuaHangError.setText(check);
+            return;
+        }
+        listCuaHang = CUA_HANG_SERVICE.getList();
+        getTableCuaHang(listCuaHang);
+        resetFormCuaHang();
+        JOptionPane.showMessageDialog(rootPane, "Xóa thành công");
+    }//GEN-LAST:event_btnViewCuaHangDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -872,14 +901,14 @@ public class QuanLyThongTinNhanVien extends javax.swing.JFrame {
     private javax.swing.JTextField txtViewCuaHangTenCuaHang;
     private javax.swing.JTextField txtViewCuaHangThanhPho;
     // End of variables declaration//GEN-END:variables
-private void getTableChucVu(List<ChucVu> list) {
+private void getTableChucVu(List<ChucVuViewModel> list) {
         modelViewChucVu.setRowCount(0);
         list.forEach((t) -> {
             modelViewChucVu.addRow(t.getObj(modelViewChucVu.getRowCount() + 1));
         });
     }
 
-    private ChucVu insertDataChucVu() {
+    private ChucVuViewModel insertDataChucVu() {
         jlViewChucVuError.setText("");
         String ma = txtMaChucVu.getText();
         String ten = txtTenChucVu.getText();
@@ -887,7 +916,7 @@ private void getTableChucVu(List<ChucVu> list) {
             jlViewChucVuError.setText("Không để trống dữ liệu");
             return null;
         }
-        return ChucVu.builder().ma(ma).id(idChucVu).ten(ten).build();
+        return ChucVuViewModel.builder().ma(ma).id(idChucVu).ten(ten).build();
     }
 
     private void resetFormChucVu() {
@@ -898,10 +927,11 @@ private void getTableChucVu(List<ChucVu> list) {
         jlViewChucVuError.setText("");
         btnViewChucVuDelete.setEnabled(false);
         btnViewChucVuUpdate.setEnabled(false);
+        tblChucVu.clearSelection();
     }
 
     private void fillFormChucVu(int checkchucVu) {
-        ChucVu cv = listChucVu.get(checkchucVu);
+        ChucVuViewModel cv = listChucVu.get(checkchucVu);
         idChucVu = cv.getId();
         txtMaChucVu.setText(cv.getMa());
         txtTenChucVu.setText(cv.getTen());
@@ -940,7 +970,8 @@ private void getTableChucVu(List<ChucVu> list) {
         checkCuaHang = -1;
         jlViewCuaHangError.setText("");
         btnViewCuaHangDelete.setEnabled(false);
-        btnViewChucVuUpdate.setEnabled(false);
+        btnViewCuaHangUpdate.setEnabled(false);
+        tblCuaHang.clearSelection();
     }
 
     private void fillFormCuaHang(int checkCuaHang) {
@@ -952,6 +983,6 @@ private void getTableChucVu(List<ChucVu> list) {
         txtViewCuaHangQuocGia.setText(ch.getQuocGia());
         idCuaHang = ch.getId();
         btnViewCuaHangDelete.setEnabled(true);
-        btnViewChucVuUpdate.setEnabled(true);
+        btnViewCuaHangUpdate.setEnabled(true);
     }
 }

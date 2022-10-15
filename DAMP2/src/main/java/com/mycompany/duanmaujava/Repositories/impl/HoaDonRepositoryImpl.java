@@ -8,7 +8,7 @@ import com.mycompany.duanmaujava.DomainModels.HoaDon;
 import com.mycompany.duanmaujava.Repositories.HoaDonRepository;
 import com.mycompany.duanmaujava.Utilities.Enums.TrangThaiHoaDon;
 import com.mycompany.duanmaujava.Utilities.hibernateUtil;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonReponse;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonViewModel;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
@@ -21,7 +21,7 @@ import org.hibernate.Transaction;
 public class HoaDonRepositoryImpl implements HoaDonRepository {
 
     @Override
-    public List<HoaDonReponse> getAll() {
+    public List<HoaDonViewModel> getAll() {
         try ( Session session = hibernateUtil.getFACTORY().openSession();) {
             String hql = """
                          select new com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonReponse
@@ -93,7 +93,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     }
 
     @Override
-    public List<HoaDonReponse> getAllByTrangThai(TrangThaiHoaDon trangThaiHoaDon) {
+    public List<HoaDonViewModel> getAllByTrangThai(TrangThaiHoaDon trangThaiHoaDon) {
         try ( Session session = hibernateUtil.getFACTORY().openSession();) {
             String hql = """
                          select new com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonReponse

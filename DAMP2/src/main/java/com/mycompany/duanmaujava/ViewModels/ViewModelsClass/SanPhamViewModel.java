@@ -8,6 +8,6 @@ package com.mycompany.duanmaujava.ViewModels.ViewModelsClass;
  *
  * @author acer
  */
-public class SanPhamReponse{
+public class SanPhamViewModel{
    
 }

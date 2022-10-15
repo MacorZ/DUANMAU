@@ -5,7 +5,7 @@
 package com.mycompany.duanmaujava.Repositories;
 
 import com.mycompany.duanmaujava.DomainModels.ChiTietSanPham;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChiTietSanPhamResponse;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChiTietSanPhamViewModel;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface ChiTietSanPhamRepository {
 
-    List<ChiTietSanPhamResponse> getAll();
+    List<ChiTietSanPhamViewModel> getAll();
 
     ChiTietSanPham getOne(ChiTietSanPham t);
 

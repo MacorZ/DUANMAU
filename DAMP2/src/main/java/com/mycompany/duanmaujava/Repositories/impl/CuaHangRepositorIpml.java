@@ -66,7 +66,7 @@ public class CuaHangRepositorIpml implements CuaHangRepository {
     @Override
     public boolean checkDelete(String id) {
         try ( Session session = hibernateUtil.getFACTORY().openSession();) {
-            Query query = session.createQuery(" From NhanVien nv where nv.cuaHang.id != id");
+            Query query = session.createQuery(" From NhanVien nv where nv.cuaHang.id != :id");
             query.setParameter("id", id);
             return query.getResultList().isEmpty();
         } catch (Exception e) {

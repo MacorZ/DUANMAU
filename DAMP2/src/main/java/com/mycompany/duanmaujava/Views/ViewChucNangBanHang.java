@@ -6,8 +6,8 @@ package com.mycompany.duanmaujava.Views;
 
 import com.mycompany.duanmaujava.DomainModels.HoaDon;
 import com.mycompany.duanmaujava.DomainModels.NhanVien;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChiTietSanPhamResponse;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonResponse;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChiTietSanPhamViewModel;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonViewModel;
 import com.mycompany.duanmaujava.Services.ChiTietHoaDonService;
 import com.mycompany.duanmaujava.Services.ChiTietSanPhamService;
 import com.mycompany.duanmaujava.Services.HoaDonService;
@@ -18,7 +18,7 @@ import com.mycompany.duanmaujava.Services.impl.ChiTietSanPhamServiceImpl;
 import com.mycompany.duanmaujava.Services.impl.HoaDonChiTietServiceImpl;
 import com.mycompany.duanmaujava.Utilities.Enums.TrangThaiHoaDon;
 import com.mycompany.duanmaujava.Utilities.MaTuSinh;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonReponse;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonViewModel;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -43,9 +43,9 @@ public class ViewChucNangBanHang extends javax.swing.JFrame {
     private static final HoaDonService HOA_DON_SERVICE = new HoaDonServiceImpl();
     private static final NhanVienService NHAN_VIEN_SERVICE = new NhanVienServiceImpl();
     private static final ChiTietSanPhamService CHI_TIET_SAN_PHAM_SERVICE = new ChiTietSanPhamServiceImpl();
-    private static List<HoaDonReponse> listHD = new ArrayList<>();
-    private static List<ChiTietSanPhamResponse> listSP = new ArrayList<>();
-    private static LinkedHashMap<String, SanPhamDaChonResponse> listGH = new LinkedHashMap<>();
+    private static List<HoaDonViewModel> listHD = new ArrayList<>();
+    private static List<ChiTietSanPhamViewModel> listSP = new ArrayList<>();
+    private static LinkedHashMap<String, SanPhamDaChonViewModel> listGH = new LinkedHashMap<>();
     private DefaultTableModel modelSP;
     private DefaultTableModel modelGioHang;
     private DefaultTableModel modelHoaDon;
@@ -505,7 +505,7 @@ public class ViewChucNangBanHang extends javax.swing.JFrame {
             return;
         }
         checkRowSP = tblSanPham.getSelectedRow();
-        ChiTietSanPhamResponse chiTietSanPham = listSP.get(checkRowSP);
+        ChiTietSanPhamViewModel chiTietSanPham = listSP.get(checkRowSP);
         String soLuongNhap = JOptionPane.showInputDialog(rootPane, "Vui lòng nhập số lượng:");
         String valid = CHI_TIET_SAN_PHAM_SERVICE.validateSoLuong(soLuongNhap, chiTietSanPham.getSoLuong());
         if (!valid.equals("")) {
@@ -521,7 +521,7 @@ public class ViewChucNangBanHang extends javax.swing.JFrame {
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
         // TODO add your handling code here:
         checkRowHD = tblHoaDon.getSelectedRow();
-        HoaDonReponse reponse = listHD.get(checkRowHD);
+        HoaDonViewModel reponse = listHD.get(checkRowHD);
         hoaDon = HOA_DON_SERVICE.getOne(HoaDon.builder().id(reponse.getId()).build());
         if (hoaDon.getTinhTrang() == TrangThaiHoaDon.CHO_THANH_TOAN) {
             txtTongTien.setText("");
@@ -665,7 +665,7 @@ public class ViewChucNangBanHang extends javax.swing.JFrame {
     private javax.swing.JTextField txtTongTien;
     // End of variables declaration//GEN-END:variables
 
-    private List<ChiTietSanPhamResponse> fillTableSanPham(List<ChiTietSanPhamResponse> list) {
+    private List<ChiTietSanPhamViewModel> fillTableSanPham(List<ChiTietSanPhamViewModel> list) {
         modelSP.setRowCount(0);
         list.forEach((t) -> {
             modelSP.addRow(t.getObj(modelSP.getRowCount() + 1));
@@ -680,21 +680,21 @@ public class ViewChucNangBanHang extends javax.swing.JFrame {
         });
     }
 
-    private List<HoaDonReponse> fillTableHoaDon() {
+    private List<HoaDonViewModel> fillTableHoaDon() {
         modelHoaDon.setRowCount(0);
-        List<HoaDonReponse> list = HOA_DON_SERVICE.getAll();
+        List<HoaDonViewModel> list = HOA_DON_SERVICE.getAll();
         getTableHD(list);
         return list;
     }
 
-    private List<HoaDonReponse> fillTableHoaDonByTT(TrangThaiHoaDon trangThaiHoaDon) {
+    private List<HoaDonViewModel> fillTableHoaDonByTT(TrangThaiHoaDon trangThaiHoaDon) {
         modelHoaDon.setRowCount(0);
-        List<HoaDonReponse> list = HOA_DON_SERVICE.getAllByTrangThai(trangThaiHoaDon);
+        List<HoaDonViewModel> list = HOA_DON_SERVICE.getAllByTrangThai(trangThaiHoaDon);
         getTableHD(list);
         return list;
     }
 
-    private void getTableHD(List<HoaDonReponse> list) {
+    private void getTableHD(List<HoaDonViewModel> list) {
         list.forEach((t) -> {
             modelHoaDon.addRow(t.getObj(modelHoaDon.getRowCount() + 1));
         });

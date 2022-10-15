@@ -52,7 +52,7 @@ public class CuaHangServiceImpl implements CuaHangService {
 
     @Override
     public String delete(CuaHangViewModel cuaHangViewModel) {
-        if (!CUA_HANG_REPOSITORY.checkDelete(cuaHangViewModel.getMa())) {
+        if (!CUA_HANG_REPOSITORY.checkDelete(cuaHangViewModel.getId())) {
             return "Không được xóa vì đã có trong thông tin nhân viên";
         }
         return CUA_HANG_REPOSITORY.delete(CuaHang.builder().ma(cuaHangViewModel.getMa())

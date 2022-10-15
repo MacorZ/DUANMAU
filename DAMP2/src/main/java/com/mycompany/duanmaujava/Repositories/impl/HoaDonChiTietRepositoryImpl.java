@@ -7,7 +7,7 @@ package com.mycompany.duanmaujava.Repositories.impl;
 import com.mycompany.duanmaujava.DomainModels.HoaDonchiTiet;
 import com.mycompany.duanmaujava.Repositories.HoaDonChiTietRepository;
 import com.mycompany.duanmaujava.Utilities.hibernateUtil;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonResponse;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonViewModel;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
@@ -63,7 +63,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     }
 
     @Override
-    public List<SanPhamDaChonResponse> getSanPhamDaChonByMaHD(String id) {
+    public List<SanPhamDaChonViewModel> getSanPhamDaChonByMaHD(String id) {
         try ( Session session = hibernateUtil.getFACTORY().openSession();) {
             String hql = """
                          select new com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonResponse

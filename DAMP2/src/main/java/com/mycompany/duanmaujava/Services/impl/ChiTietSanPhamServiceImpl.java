@@ -6,8 +6,8 @@ package com.mycompany.duanmaujava.Services.impl;
 
 import com.mycompany.duanmaujava.DomainModels.ChiTietSanPham;
 import com.mycompany.duanmaujava.ViewModels.ViewModelMapping.MappingResponse;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChiTietSanPhamResponse;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonResponse;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChiTietSanPhamViewModel;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonViewModel;
 import com.mycompany.duanmaujava.Repositories.ChiTietSanPhamRepository;
 import com.mycompany.duanmaujava.Repositories.HoaDonChiTietRepository;
 import com.mycompany.duanmaujava.Repositories.SanPhamRepository;
@@ -30,7 +30,7 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     private static final HoaDonChiTietRepository HOA_DON_CHI_TIET_REPOSITORY = new HoaDonChiTietRepositoryImpl();
 
     @Override
-    public List<ChiTietSanPhamResponse> getAll() {
+    public List<ChiTietSanPhamViewModel> getAll() {
         return REPO_CTSP.getAll();
     }
 
@@ -53,9 +53,9 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     }
 
     @Override
-    public LinkedHashMap<String, SanPhamDaChonResponse> addSanPhamVaoGioHang(LinkedHashMap<String, SanPhamDaChonResponse> gioHang, ChiTietSanPhamResponse chiTietSanPhamResponse, int soLuong) {
+    public LinkedHashMap<String, SanPhamDaChonViewModel> addSanPhamVaoGioHang(LinkedHashMap<String, SanPhamDaChonViewModel> gioHang, ChiTietSanPhamViewModel chiTietSanPhamResponse, int soLuong) {
         ChiTietSanPham chiTietSanPham = REPO_CTSP.getOne(ChiTietSanPham.builder().id(chiTietSanPhamResponse.getId()).build());
-        SanPhamDaChonResponse sanPhamDaChonResponse = MappingResponse.getSanPhamDaChonReponse(chiTietSanPham);
+        SanPhamDaChonViewModel sanPhamDaChonResponse = MappingResponse.getSanPhamDaChonReponse(chiTietSanPham);
         sanPhamDaChonResponse.setSoLuong(soLuong);
         gioHang.put(chiTietSanPhamResponse.getId(), sanPhamDaChonResponse);
         return gioHang;
@@ -81,13 +81,13 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     }
 
     @Override
-    public BigDecimal getTongTien(LinkedHashMap<String, SanPhamDaChonResponse> list) {
+    public BigDecimal getTongTien(LinkedHashMap<String, SanPhamDaChonViewModel> list) {
         return list.values().stream().map(u -> u.thanhTien()).reduce(BigDecimal.ZERO, BigDecimal::add);
 
     }
 
     @Override
-    public List<ChiTietSanPhamResponse> getListByTenSP(String tenSP, List<ChiTietSanPhamResponse> list) {
+    public List<ChiTietSanPhamViewModel> getListByTenSP(String tenSP, List<ChiTietSanPhamViewModel> list) {
 
         return list.stream().filter((t) -> (t.getTen().indexOf(tenSP) >= 0)).toList();
 

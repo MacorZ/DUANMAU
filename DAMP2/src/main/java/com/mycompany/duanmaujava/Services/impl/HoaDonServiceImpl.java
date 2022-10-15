@@ -10,7 +10,7 @@ import com.mycompany.duanmaujava.Repositories.impl.HoaDonRepositoryImpl;
 import com.mycompany.duanmaujava.Services.HoaDonService;
 import com.mycompany.duanmaujava.Services.ICommon;
 import com.mycompany.duanmaujava.Utilities.Enums.TrangThaiHoaDon;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonReponse;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonViewModel;
 import java.util.List;
 
 /**
@@ -22,7 +22,7 @@ public class HoaDonServiceImpl implements HoaDonService {
     private static final HoaDonRepository REPO = new HoaDonRepositoryImpl();
 
     @Override
-    public List<HoaDonReponse> getAll() {
+    public List<HoaDonViewModel> getAll() {
         return REPO.getAll();
     }
 
@@ -33,7 +33,7 @@ public class HoaDonServiceImpl implements HoaDonService {
     }
 
     @Override
-    public List<HoaDonReponse> getAllByTrangThai(TrangThaiHoaDon trangThaiHoaDon) {
+    public List<HoaDonViewModel> getAllByTrangThai(TrangThaiHoaDon trangThaiHoaDon) {
         return REPO.getAllByTrangThai(trangThaiHoaDon);
     }
 

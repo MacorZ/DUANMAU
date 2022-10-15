@@ -5,8 +5,8 @@
 package com.mycompany.duanmaujava.Services;
 
 import com.mycompany.duanmaujava.DomainModels.ChiTietSanPham;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChiTietSanPhamResponse;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonResponse;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChiTietSanPhamViewModel;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonViewModel;
 import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
  */
 public interface ChiTietSanPhamService {
 
-    List<ChiTietSanPhamResponse> getAll();
+    List<ChiTietSanPhamViewModel> getAll();
 
     String save(ChiTietSanPham t);
 
@@ -27,13 +27,13 @@ public interface ChiTietSanPhamService {
 
     String updateChiTietSanPham(ChiTietSanPham t);
 
-    LinkedHashMap<String, SanPhamDaChonResponse> addSanPhamVaoGioHang(LinkedHashMap<String, SanPhamDaChonResponse> gioHang, ChiTietSanPhamResponse chiTietSanPhamResponse, int soLuong);
+    LinkedHashMap<String, SanPhamDaChonViewModel> addSanPhamVaoGioHang(LinkedHashMap<String, SanPhamDaChonViewModel> gioHang, ChiTietSanPhamViewModel chiTietSanPhamResponse, int soLuong);
 
     String validateSoLuong(String soLuongNhap, int soLuongTon);
 
-    BigDecimal getTongTien(LinkedHashMap<String, SanPhamDaChonResponse> gioHang);
+    BigDecimal getTongTien(LinkedHashMap<String, SanPhamDaChonViewModel> gioHang);
 
-    List<ChiTietSanPhamResponse> getListByTenSP(String tenSP, List<ChiTietSanPhamResponse> list);
+    List<ChiTietSanPhamViewModel> getListByTenSP(String tenSP, List<ChiTietSanPhamViewModel> list);
     
     List<ChiTietSanPham> getList();
     

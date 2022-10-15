@@ -5,7 +5,7 @@
 package com.mycompany.duanmaujava.Repositories;
 
 import com.mycompany.duanmaujava.DomainModels.HoaDonchiTiet;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonResponse;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonViewModel;
 import java.util.List;
 
 /**
@@ -23,7 +23,7 @@ public interface HoaDonChiTietRepository {
 
     boolean delete(HoaDonchiTiet t);
     
-    List<SanPhamDaChonResponse> getSanPhamDaChonByMaHD(String id);
+    List<SanPhamDaChonViewModel> getSanPhamDaChonByMaHD(String id);
     
     boolean getByIdChiTietSanPham(String id);
 }

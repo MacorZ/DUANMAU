@@ -5,7 +5,7 @@
 package com.mycompany.duanmaujava.Services;
 
 import com.mycompany.duanmaujava.DomainModels.HoaDonchiTiet;
-import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonResponse;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonViewModel;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -19,12 +19,12 @@ public interface ChiTietHoaDonService {
 
     String save(HoaDonchiTiet t);
 
-    String saveAll(String maHoaDon, LinkedHashMap<String, SanPhamDaChonResponse> listSP);
+    String saveAll(String maHoaDon, LinkedHashMap<String, SanPhamDaChonViewModel> listSP);
 
     HoaDonchiTiet getOne(HoaDonchiTiet t);
 
     String getTienThua(String tienKhachDua, String tongTien);
 
-    LinkedHashMap<String,SanPhamDaChonResponse> getSanPhamDaChonByMaHD(String id);
+    LinkedHashMap<String,SanPhamDaChonViewModel> getSanPhamDaChonByMaHD(String id);
     
 }

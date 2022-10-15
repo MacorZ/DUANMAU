@@ -4,12 +4,11 @@
  */
 package com.mycompany.duanmaujava.ViewModels.ViewModelsClass;
 
+import com.mycompany.duanmaujava.DomainModels.GetObject;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.math.BigDecimal;
-import com.mycompany.duanmaujava.DomainModels.GetObject;
 
 /**
  *
@@ -19,21 +18,16 @@ import com.mycompany.duanmaujava.DomainModels.GetObject;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ChiTietSanPhamResponse implements GetObject {
+public class ChucVuViewModel implements GetObject {
 
     private String id;
     private String ma;
     private String ten;
-    private int namBH;
-    private String moTa;
-    private int soLuong;
-    private BigDecimal giaNhap;
-    private BigDecimal giaBan;
 
     @Override
     public Object[] getObj(int i) {
         return new Object[]{
-            i, ma, ten, namBH, moTa, soLuong, giaNhap + " VNĐ", giaBan + " VNĐ"
+            i, ma, ten
         };
     }
 }

@@ -21,7 +21,7 @@ import com.mycompany.duanmaujava.DomainModels.GetObject;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HoaDonReponse implements GetObject {
+public class HoaDonViewModel implements GetObject {
 
     private String id;
     private String maHD;

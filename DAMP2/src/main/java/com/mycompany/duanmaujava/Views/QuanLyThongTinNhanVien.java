@@ -46,6 +46,7 @@ public class QuanLyThongTinNhanVien extends javax.swing.JFrame {
         getTableCuaHang(listCuaHang);
         getTableChucVu(listChucVu);
         resetFormChucVu();
+        resetFormCuaHang();
     }
 
     /**
@@ -417,12 +418,22 @@ public class QuanLyThongTinNhanVien extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtViewCuaHangQuocGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         btntxtViewCuaHangSave.setText("Thêm");
+        btntxtViewCuaHangSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntxtViewCuaHangSaveActionPerformed(evt);
+            }
+        });
 
         btnViewCuaHangUpdate.setText("Sửa");
+        btnViewCuaHangUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewCuaHangUpdateActionPerformed(evt);
+            }
+        });
 
         btnViewCuaHangDelete.setText("Xóa");
 
@@ -439,6 +450,11 @@ public class QuanLyThongTinNhanVien extends javax.swing.JFrame {
                 "STT", "Mã cửa hàng", "Tên cửa hàng", "Địa chỉ", "Thành phố", "Quốc gia"
             }
         ));
+        tblCuaHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCuaHangMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblCuaHang);
 
         jlViewCuaHangError.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -474,9 +490,6 @@ public class QuanLyThongTinNhanVien extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(btntxtViewCuaHangSave)
                         .addGap(18, 18, 18)
@@ -484,10 +497,14 @@ public class QuanLyThongTinNhanVien extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnViewCuaHangDelete)
                         .addGap(18, 18, 18)
-                        .addComponent(btnViewCuaHangReset)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnViewCuaHangReset)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jlViewCuaHangError, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -709,6 +726,46 @@ public class QuanLyThongTinNhanVien extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(rootPane, "Cập nhật thành công");
     }//GEN-LAST:event_btnViewChucVuUpdateActionPerformed
 
+    private void btntxtViewCuaHangSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntxtViewCuaHangSaveActionPerformed
+        // TODO add your handling code here:
+        CuaHangViewModel cuaHangViewModel = insertDataCuaHang();
+        if (cuaHangViewModel == null) {
+            return;
+        }
+        String check = CUA_HANG_SERVICE.save(cuaHangViewModel);
+        if (!check.equals("")) {
+            jlViewCuaHangError.setText(check);
+            return;
+        }
+        listCuaHang = CUA_HANG_SERVICE.getList();
+        getTableCuaHang(listCuaHang);
+        resetFormCuaHang();
+        JOptionPane.showMessageDialog(rootPane, "Thêm thành công");
+    }//GEN-LAST:event_btntxtViewCuaHangSaveActionPerformed
+
+    private void tblCuaHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCuaHangMouseClicked
+        // TODO add your handling code here:
+        checkCuaHang = tblCuaHang.getSelectedRow();
+        fillFormCuaHang(checkCuaHang);
+    }//GEN-LAST:event_tblCuaHangMouseClicked
+
+    private void btnViewCuaHangUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCuaHangUpdateActionPerformed
+        // TODO add your handling code here:
+        CuaHangViewModel cuaHangViewModel = insertDataCuaHang();
+        if (cuaHangViewModel == null) {
+            return;
+        }
+        String check = CUA_HANG_SERVICE.update(cuaHangViewModel);
+        if (!check.equals("")) {
+            jlViewCuaHangError.setText(check);
+            return;
+        }
+        listCuaHang = CUA_HANG_SERVICE.getList();
+        getTableCuaHang(listCuaHang);
+        resetFormCuaHang();
+        JOptionPane.showMessageDialog(rootPane, "Cạp nhật thành công");
+    }//GEN-LAST:event_btnViewCuaHangUpdateActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -859,8 +916,7 @@ private void getTableChucVu(List<ChucVu> list) {
         });
     }
 
-    private CuaHangViewModel
-         insertDataCuaHang() {
+    private CuaHangViewModel insertDataCuaHang() {
         jlViewCuaHangError.setText("");
         String ma = txtViewCuaHangMaCuaHang.getText();
         String ten = txtViewCuaHangTenCuaHang.getText();

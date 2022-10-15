@@ -21,7 +21,8 @@ public class CuaHangServiceImpl implements CuaHangService {
 
     @Override
     public List<CuaHangViewModel> getList() {
-        return CUA_HANG_REPOSITORY.getList().stream().map(t -> new CuaHangViewModel(t.getId(), t.getMa(), t.getTen(), t.getDiaChi(), t.getThanhPho(), t.getQuocGia())).toList();
+        return CUA_HANG_REPOSITORY.getList().stream().map(t
+                -> new CuaHangViewModel(t.getId(), t.getMa(), t.getTen(), t.getDiaChi(), t.getThanhPho(), t.getQuocGia())).toList();
     }
 
     @Override
@@ -35,7 +36,7 @@ public class CuaHangServiceImpl implements CuaHangService {
             return "Mã đã tồn tại";
         }
         return CUA_HANG_REPOSITORY.save(CuaHang.builder().ma(cuaHangViewModel.getMa())
-                .ten(cuaHangViewModel.getTen()).diaChi(cuaHangViewModel.getId()).
+                .ten(cuaHangViewModel.getTen()).diaChi(cuaHangViewModel.getDiaChi()).
                 thanhPho(cuaHangViewModel.getThanhPho()).quocGia(cuaHangViewModel.getQuocGia()).build()) ? "" : "Thêm thất bại";
     }
 
@@ -45,7 +46,7 @@ public class CuaHangServiceImpl implements CuaHangService {
             return "Mã đã tồn tại";
         }
         return CUA_HANG_REPOSITORY.save(CuaHang.builder().ma(cuaHangViewModel.getMa())
-                .ten(cuaHangViewModel.getTen()).diaChi(cuaHangViewModel.getId()).
+                .ten(cuaHangViewModel.getTen()).diaChi(cuaHangViewModel.getDiaChi()).
                 thanhPho(cuaHangViewModel.getThanhPho()).quocGia(cuaHangViewModel.getQuocGia()).id(cuaHangViewModel.getId()).build()) ? "" : "Cập nhật thất bại";
     }
 
@@ -55,8 +56,8 @@ public class CuaHangServiceImpl implements CuaHangService {
             return "Không được xóa vì đã có trong thông tin nhân viên";
         }
         return CUA_HANG_REPOSITORY.delete(CuaHang.builder().ma(cuaHangViewModel.getMa())
-                .ten(cuaHangViewModel.getTen()).diaChi(cuaHangViewModel.getId()).
-                thanhPho(cuaHangViewModel.getThanhPho()).quocGia(cuaHangViewModel.getQuocGia()).build()) ? "" : "Xóa thất bại";
+                .ten(cuaHangViewModel.getTen()).diaChi(cuaHangViewModel.getDiaChi()).
+                thanhPho(cuaHangViewModel.getThanhPho()).quocGia(cuaHangViewModel.getQuocGia()).id(cuaHangViewModel.getId()).build()) ? "" : "Xóa thất bại";
     }
 
 }

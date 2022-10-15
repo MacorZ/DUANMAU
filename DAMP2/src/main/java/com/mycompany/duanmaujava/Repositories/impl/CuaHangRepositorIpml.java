@@ -11,6 +11,7 @@ import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.CuaHangViewModel;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -64,22 +65,59 @@ public class CuaHangRepositorIpml implements CuaHangRepository {
 
     @Override
     public boolean checkDelete(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
+            Query query = session.createQuery(" From NhanVien nv where nv.cuaHang.id != id");
+            query.setParameter("id", id);
+            return query.getResultList().isEmpty();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
     public boolean save(CuaHang ch) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Transaction transaction = null;
+        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
+            transaction = session.beginTransaction();
+            session.save(ch);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+            return false;
+        }
+        return true;
     }
 
     @Override
     public boolean update(CuaHang ch) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Transaction transaction = null;
+        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
+            transaction = session.beginTransaction();
+            session.update(ch);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+            return false;
+        }
+        return true;
     }
 
     @Override
     public boolean delete(CuaHang ch) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Transaction transaction = null;
+        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
+            transaction = session.beginTransaction();
+            session.delete(ch);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+            return false;
+        }
+        return true;
     }
 
 }

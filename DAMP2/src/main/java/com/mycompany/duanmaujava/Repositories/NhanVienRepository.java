@@ -12,6 +12,7 @@ import java.util.List;
  * @author acer
  */
 public interface NhanVienRepository {
+
     List<NhanVien> getAll();
 
     NhanVien getOne(NhanVien t);
@@ -21,6 +22,5 @@ public interface NhanVienRepository {
     NhanVien update(NhanVien t);
 
     boolean delete(NhanVien t);
-    
-    
+
 }

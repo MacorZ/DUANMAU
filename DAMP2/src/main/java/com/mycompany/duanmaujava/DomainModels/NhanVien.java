@@ -4,10 +4,13 @@
  */
 package com.mycompany.duanmaujava.DomainModels;
 
+import com.mycompany.duanmaujava.Utilities.Enums.TrangThaiNhanVien;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -30,10 +33,10 @@ import org.hibernate.annotations.Nationalized;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class NhanVien implements Serializable{
+public class NhanVien implements Serializable {
 
     @Id
-    @Column(name = "Id", nullable = false,columnDefinition="uniqueidentifier")
+    @Column(name = "Id", nullable = false, columnDefinition = "uniqueidentifier")
     @GenericGenerator(name = "generator", strategy = "guid", parameters = {})
     @GeneratedValue(generator = "generator")
     private String id;
@@ -70,6 +73,7 @@ public class NhanVien implements Serializable{
     @JoinColumn(name = "IdGuiBC")
     private NhanVien nhanVien;
     @Column(name = "TrangThai")
-    private int trangThai;
+    @Enumerated(EnumType.ORDINAL)
+    private TrangThaiNhanVien trangThai;
 
 }

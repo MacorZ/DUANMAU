@@ -16,11 +16,18 @@ import org.hibernate.Transaction;
  *
  * @author acer
  */
-public class NhanVienRepositoryImpl implements NhanVienRepository{
+public class NhanVienRepositoryImpl implements NhanVienRepository {
 
     @Override
     public List<NhanVien> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
+            String hql = "From NhanVien";
+            Query query = session.createQuery(hql);
+            return query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

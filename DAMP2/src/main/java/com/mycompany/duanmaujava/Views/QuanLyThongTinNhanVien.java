@@ -11,6 +11,7 @@ import com.mycompany.duanmaujava.Services.impl.CuaHangServiceImpl;
 import com.mycompany.duanmaujava.Utilities.Validate;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChucVuViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.CuaHangViewModel;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.NhanVienViewModel;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -27,15 +28,18 @@ public class QuanLyThongTinNhanVien extends javax.swing.JFrame {
      */
     private static final ChucVuService CHUC_VU_SERVICE = new ChucVuServiceImpl();
     private static final CuaHangService CUA_HANG_SERVICE = new CuaHangServiceImpl();
-    private Lis
+    private List<NhanVienViewModel> listNhanVien = new ArrayList<>();
     private List<CuaHangViewModel> listCuaHang = new ArrayList<>();
     private List<ChucVuViewModel> listChucVu = new ArrayList<>();
     private DefaultTableModel modelViewCuaHang;
     private DefaultTableModel modelViewChucVu;
+    private DefaultTableModel modelViewNhanVien;
     private String idCuaHang;
     private String idChucVu;
+    private String idNhanVien;
     private int checkCuaHang;
     private int checkchucVu;
+    private int checkNhanVien;
 
     public QuanLyThongTinNhanVien() {
         initComponents();

@@ -5,6 +5,8 @@
 package com.mycompany.duanmaujava.ViewModels.ViewModelsClass;
 
 import com.mycompany.duanmaujava.DomainModels.GetObject;
+import com.mycompany.duanmaujava.Utilities.Enums.TrangThaiNhanVien;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,14 +33,26 @@ public class NhanVienViewModel implements GetObject {
     private String diaChi;
     private String soDT;
     private String matKhau;
-    private String cuaHang;
-    private String chucVu;
-    private String nhanVien;
-    private int trangThai;
+    private CuaHangViewModel cuaHang;
+    private ChucVuViewModel chucVu;
+    private NhanVienViewModel nhanVien;
+    private TrangThaiNhanVien trangThai;
+
+    public String getDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return dateFormat.format(ngaySinh);
+
+    }
+
+    public String getNV() {
+        return nhanVien == null ? "Trống" : nhanVien.getTen();
+    }
 
     @Override
     public Object[] getObj(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new Object[]{
+            i, ma, ho + " " + tenDem + " " + ten, gioiTinh, getDate(), diaChi, soDT, cuaHang.getTen(), chucVu.getTen(), getNV(), trangThai.getTT()
+        };
     }
 
 }

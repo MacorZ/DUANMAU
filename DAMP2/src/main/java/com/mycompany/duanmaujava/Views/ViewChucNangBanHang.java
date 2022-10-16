@@ -50,7 +50,7 @@ public class ViewChucNangBanHang extends javax.swing.JFrame {
     private DefaultTableModel modelSP;
     private DefaultTableModel modelGioHang;
     private DefaultTableModel modelHoaDon;
-    private HoaDon hoaDon;
+    private HoaDonViewModel hoaDon;
     private int checkRowSP, checkRowHD;
 
     public ViewChucNangBanHang() {
@@ -522,7 +522,7 @@ public class ViewChucNangBanHang extends javax.swing.JFrame {
         // TODO add your handling code here:
         checkRowHD = tblHoaDon.getSelectedRow();
         HoaDonViewModel reponse = listHD.get(checkRowHD);
-        hoaDon = HOA_DON_SERVICE.getOne(HoaDon.builder().id(reponse.getId()).build());
+        hoaDon = listHD.get(checkRowHD);
         if (hoaDon.getTinhTrang() == TrangThaiHoaDon.CHO_THANH_TOAN) {
             txtTongTien.setText("");
             listGH.clear();
@@ -715,7 +715,7 @@ public class ViewChucNangBanHang extends javax.swing.JFrame {
         }
     }
 
-    public void fillFormHoaDon(HoaDon hoaDon) {
+    public void fillFormHoaDon(HoaDonViewModel hoaDon) {
         disableFormHoaDon();
         if (hoaDon.getTinhTrang() == TrangThaiHoaDon.CHO_THANH_TOAN) {
             enableFormHoaDon();

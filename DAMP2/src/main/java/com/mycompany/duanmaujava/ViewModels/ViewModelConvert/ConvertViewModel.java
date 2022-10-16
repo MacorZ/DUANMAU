@@ -7,14 +7,21 @@ package com.mycompany.duanmaujava.ViewModels.ViewModelConvert;
 import com.mycompany.duanmaujava.DomainModels.ChiTietSanPham;
 import com.mycompany.duanmaujava.DomainModels.ChucVu;
 import com.mycompany.duanmaujava.DomainModels.CuaHang;
+import com.mycompany.duanmaujava.DomainModels.DongSP;
 import com.mycompany.duanmaujava.DomainModels.HoaDon;
+import com.mycompany.duanmaujava.DomainModels.MauSac;
+import com.mycompany.duanmaujava.DomainModels.NhaSanXuat;
 import com.mycompany.duanmaujava.DomainModels.NhanVien;
+import com.mycompany.duanmaujava.DomainModels.SanPham;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChiTietSanPhamViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChucVuViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.CuaHangViewModel;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.DongSanPhamViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonViewModel;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.MauSacViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.NhanVienViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonViewModel;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamViewModel;
 
 /**
  *
@@ -66,5 +73,24 @@ public class ConvertViewModel {
         return HoaDon.builder().id(hoaDonViewModel.getId()).ma(hoaDonViewModel.getMa()).ngayTao(hoaDonViewModel.getNgayTao())
                 .nhanVien(getNhanVien(hoaDonViewModel.getNhanVien())).tinhTrang(hoaDonViewModel.getTinhTrang()).build();
     }
-    public static 
+
+    public static SanPhamViewModel getSanPhamViewModel(SanPham sanPham) {
+            return 
+    }
+
+    public static NhanVienViewModel getNhaSanXuatViewModel(NhaSanXuat nhaSanXuat) {
+
+    }
+
+    public static MauSacViewModel getMauSacViewModel(MauSac mauSac) {
+
+    }
+
+    public static DongSanPhamViewModel getDongSanPhamViewModel(DongSP dongSP) {
+
+    }
+
+    public static getChiTietSanPhamViewModel(ChiTietSanPham chiTietSanPham) {
+        return ChiTietSanPhamViewModel.builder().id(chiTietSanPham.getId()).sanPham(chiTietSanPham.getSanPham())
+    }
 }

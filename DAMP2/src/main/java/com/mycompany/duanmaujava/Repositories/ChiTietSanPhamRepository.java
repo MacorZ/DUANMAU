@@ -14,8 +14,6 @@ import java.util.List;
  */
 public interface ChiTietSanPhamRepository {
 
-    List<ChiTietSanPhamViewModel> getAll();
-
     ChiTietSanPham getOne(ChiTietSanPham t);
 
     ChiTietSanPham save(ChiTietSanPham t);

@@ -20,24 +20,8 @@ import org.hibernate.Transaction;
 public class ChiTietSanPhamRepositoryImpl implements ChiTietSanPhamRepository {
 
     @Override
-    public List<ChiTietSanPhamViewModel> getAll() {
-        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
-            String hql = """
-                   select new com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChiTietSanPhamResponse(
-                   sp.id,sp.sanPham.ma,sp.sanPham.ten,sp.namBH,sp.moTa,sp.soLuongTon
-                  ,sp.giaNhap,sp.giaBan)from ChiTietSanPham sp
-                   """;
-            Query query = session.createQuery(hql);
-            return query.getResultList();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    @Override
     public ChiTietSanPham getOne(ChiTietSanPham t) {
-        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
+        try (Session session = hibernateUtil.getFACTORY().openSession();) {
             return session.get(ChiTietSanPham.class, t.getId());
         } catch (Exception e) {
             e.printStackTrace();
@@ -48,7 +32,7 @@ public class ChiTietSanPhamRepositoryImpl implements ChiTietSanPhamRepository {
     @Override
     public ChiTietSanPham save(ChiTietSanPham t) {
         Transaction transaction = null;
-        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
+        try (Session session = hibernateUtil.getFACTORY().openSession();) {
             transaction = session.beginTransaction();
             session.save(t);
             transaction.commit();
@@ -62,7 +46,7 @@ public class ChiTietSanPhamRepositoryImpl implements ChiTietSanPhamRepository {
     @Override
     public ChiTietSanPham update(ChiTietSanPham t) {
         Transaction transaction = null;
-        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
+        try (Session session = hibernateUtil.getFACTORY().openSession();) {
             transaction = session.beginTransaction();
             session.update(t);
             transaction.commit();
@@ -76,7 +60,7 @@ public class ChiTietSanPhamRepositoryImpl implements ChiTietSanPhamRepository {
     @Override
     public boolean delete(ChiTietSanPham t) {
         Transaction transaction = null;
-        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
+        try (Session session = hibernateUtil.getFACTORY().openSession();) {
             transaction = session.beginTransaction();
             session.delete(t);
             transaction.commit();
@@ -90,7 +74,7 @@ public class ChiTietSanPhamRepositoryImpl implements ChiTietSanPhamRepository {
 
     @Override
     public List<ChiTietSanPham> getList() {
-        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
+        try (Session session = hibernateUtil.getFACTORY().openSession();) {
             Query query = session.createQuery("From ChiTietSanPham ctsp");
             return query.getResultList();
         } catch (Exception e) {
@@ -101,7 +85,7 @@ public class ChiTietSanPhamRepositoryImpl implements ChiTietSanPhamRepository {
 
     @Override
     public List<ChiTietSanPham> getByTenSP(String ten) {
-        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
+        try (Session session = hibernateUtil.getFACTORY().openSession();) {
             Query query = session.createQuery("From ChiTietSanPham ctsp where ctsp.sanPham.ten like :ten");
             query.setParameter("ten", "%" + ten + "%");
             return query.getResultList();
@@ -113,7 +97,7 @@ public class ChiTietSanPhamRepositoryImpl implements ChiTietSanPhamRepository {
 
     @Override
     public ChiTietSanPham getByIdSanPham(String id) {
-        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
+        try (Session session = hibernateUtil.getFACTORY().openSession();) {
             Query query = session.createQuery("From ChiTietSanPham ctsp where ctsp.sanPham.id = :id");
             query.setParameter("id", id);
             return (ChiTietSanPham) query.getSingleResult();
@@ -125,7 +109,7 @@ public class ChiTietSanPhamRepositoryImpl implements ChiTietSanPhamRepository {
 
     @Override
     public ChiTietSanPham getByIdDongSP(String id) {
-        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
+        try (Session session = hibernateUtil.getFACTORY().openSession();) {
             Query query = session.createQuery("From ChiTietSanPham ctsp where ctsp.dongSP.id = :id");
             query.setParameter("id", id);
             return (ChiTietSanPham) query.getSingleResult();
@@ -137,7 +121,7 @@ public class ChiTietSanPhamRepositoryImpl implements ChiTietSanPhamRepository {
 
     @Override
     public ChiTietSanPham getByIdNhaSX(String id) {
-        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
+        try (Session session = hibernateUtil.getFACTORY().openSession();) {
             Query query = session.createQuery("From ChiTietSanPham ctsp where ctsp.nhaSanXuat.id = :id");
             query.setParameter("id", id);
             return (ChiTietSanPham) query.getSingleResult();
@@ -149,7 +133,7 @@ public class ChiTietSanPhamRepositoryImpl implements ChiTietSanPhamRepository {
 
     @Override
     public ChiTietSanPham getByIdMauSac(String id) {
-        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
+        try (Session session = hibernateUtil.getFACTORY().openSession();) {
             Query query = session.createQuery("From ChiTietSanPham ctsp where ctsp.mauSac.id = :id");
             query.setParameter("id", id);
             return (ChiTietSanPham) query.getSingleResult();

@@ -66,4 +66,5 @@ public class ConvertViewModel {
         return HoaDon.builder().id(hoaDonViewModel.getId()).ma(hoaDonViewModel.getMa()).ngayTao(hoaDonViewModel.getNgayTao())
                 .nhanVien(getNhanVien(hoaDonViewModel.getNhanVien())).tinhTrang(hoaDonViewModel.getTinhTrang()).build();
     }
+    public static 
 }

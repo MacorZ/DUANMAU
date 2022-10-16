@@ -31,7 +31,7 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
 
     @Override
     public List<ChiTietSanPhamViewModel> getAll() {
-        return REPO_CTSP.getAll();
+        return REPO_CTSP.getList().stream().map(t -> ConvertViewModel.getSanPhamViewModel());
     }
 
     @Override

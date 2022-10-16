@@ -450,10 +450,9 @@ public class ViewChucNangBanHang extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         NhanVienViewModel nhanVien = NHAN_VIEN_SERVICE.getOneByMa("NV01");
-        hoaDon = HoaDon.builder().ma(
-                MaTuSinh.genMaTuSinh("HD")).ngayTao(new Date()).diaChi("HN").nhanVien(nhanVien)
-                .tinhTrang(TrangThaiHoaDon.CHO_THANH_TOAN).build();
-        HOA_DON_SERVICE.save(hoaDon);
+        HoaDonViewModel hoaDonViewModel = HoaDonViewModel.builder().ma(MaTuSinh.genMaTuSinh("HD")).
+                ngayTao(new Date()).diaChi("HN").nhanVien(nhanVien).tinhTrang(TrangThaiHoaDon.CHO_THANH_TOAN).build();
+        HOA_DON_SERVICE.save(hoaDonViewModel);
         fillFormHoaDon(hoaDon);
         fillHoaDon();
         listGH.clear();
@@ -574,10 +573,10 @@ public class ViewChucNangBanHang extends javax.swing.JFrame {
 
     private void tblGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGioHangMouseClicked
         // TODO add your handling code here:
-        if(hoaDon.getTinhTrang() == TrangThaiHoaDon.DA_THANH_TOAN){
-           JOptionPane.showMessageDialog(rootPane,"Hóa đơn đã được thanh toán");
-           tblGioHang.clearSelection();
-           return;
+        if (hoaDon.getTinhTrang() == TrangThaiHoaDon.DA_THANH_TOAN) {
+            JOptionPane.showMessageDialog(rootPane, "Hóa đơn đã được thanh toán");
+            tblGioHang.clearSelection();
+            return;
         }
         String id = modelGioHang.getValueAt(tblGioHang.getSelectedRow(), 6).toString();
         int soLuong = Integer.parseInt(modelGioHang.getValueAt(tblGioHang.getSelectedRow(), 3).toString());

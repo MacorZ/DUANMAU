@@ -7,10 +7,12 @@ package com.mycompany.duanmaujava.ViewModels.ViewModelConvert;
 import com.mycompany.duanmaujava.DomainModels.ChiTietSanPham;
 import com.mycompany.duanmaujava.DomainModels.ChucVu;
 import com.mycompany.duanmaujava.DomainModels.CuaHang;
+import com.mycompany.duanmaujava.DomainModels.HoaDon;
 import com.mycompany.duanmaujava.DomainModels.NhanVien;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChiTietSanPhamViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChucVuViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.CuaHangViewModel;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.NhanVienViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonViewModel;
 
@@ -58,5 +60,10 @@ public class ConvertViewModel {
                 diaChi(nhanVienViewModel.getDiaChi()).soDT(nhanVienViewModel.getSoDT()).chucVu(getChucVu(nhanVienViewModel.getChucVu())).
                 cuaHang(getCuaHang(nhanVienViewModel.getCuaHang())).nhanVien(getNhanVien(nhanVienViewModel.getNhanVien())).
                 trangThai(nhanVienViewModel.getTrangThai()).build();
+    }
+
+    public static HoaDon getHoaDon(HoaDonViewModel hoaDonViewModel) {
+        return HoaDon.builder().id(hoaDonViewModel.getId()).ma(hoaDonViewModel.getMa()).ngayTao(hoaDonViewModel.getNgayTao())
+                .nhanVien(getNhanVien(hoaDonViewModel.getNhanVien())).tinhTrang(hoaDonViewModel.getTinhTrang()).build();
     }
 }

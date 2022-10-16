@@ -8,8 +8,8 @@ import com.mycompany.duanmaujava.DomainModels.HoaDon;
 import com.mycompany.duanmaujava.Repositories.HoaDonRepository;
 import com.mycompany.duanmaujava.Repositories.impl.HoaDonRepositoryImpl;
 import com.mycompany.duanmaujava.Services.HoaDonService;
-import com.mycompany.duanmaujava.Services.ICommon;
 import com.mycompany.duanmaujava.Utilities.Enums.TrangThaiHoaDon;
+import com.mycompany.duanmaujava.ViewModels.ViewModelConvert.ConvertViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonViewModel;
 import java.util.List;
 
@@ -18,27 +18,27 @@ import java.util.List;
  * @author acer
  */
 public class HoaDonServiceImpl implements HoaDonService {
-
+    
     private static final HoaDonRepository REPO = new HoaDonRepositoryImpl();
-
+    
     @Override
     public List<HoaDonViewModel> getAll() {
         return REPO.getAll();
     }
-
+    
     @Override
-    public String save(HoaDon t) {
-        REPO.save(t);
+    public String save(HoaDonViewModel t) {
+        REPO.save(ConvertViewModel.getHoaDon(t));
         return "";
     }
-
+    
     @Override
     public List<HoaDonViewModel> getAllByTrangThai(TrangThaiHoaDon trangThaiHoaDon) {
         return REPO.getAllByTrangThai(trangThaiHoaDon);
     }
-
+    
     @Override
-    public HoaDon getOne(HoaDon t) {
-            return REPO.getOne(t);
+    public HoaDon getOne(HoaDonViewModel t) {
+        return REPO.getOne(ConvertViewModel.getHoaDon(t));
     }
 }

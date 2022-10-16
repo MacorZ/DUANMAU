@@ -17,9 +17,9 @@ public interface HoaDonService {
 
     List<HoaDonViewModel> getAll();
 
-    String save(HoaDon t);
+    String save(HoaDonViewModel t);
 
-    HoaDon getOne(HoaDon t);
+    HoaDon getOne(HoaDonViewModel t);
 
     List<HoaDonViewModel> getAllByTrangThai(TrangThaiHoaDon trangThaiHoaDon);
 

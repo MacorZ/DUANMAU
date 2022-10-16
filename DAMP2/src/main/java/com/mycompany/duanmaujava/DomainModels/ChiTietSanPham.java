@@ -67,8 +67,9 @@ public class ChiTietSanPham implements Serializable, GetObject {
         };
     }
     public static void main(String[] args) {
-        ChiTietSanPham chiTietSanPham = new ChiTietSanPham();
-        chiTietSanPham.setId("sad");
+        String s = null;
+        System.out.println("".equals(s));
         
     }
+    
 }

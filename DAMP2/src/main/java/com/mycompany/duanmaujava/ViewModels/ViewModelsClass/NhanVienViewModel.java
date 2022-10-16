@@ -48,10 +48,14 @@ public class NhanVienViewModel implements GetObject {
         return nhanVien == null ? "Trống" : nhanVien.getTen();
     }
 
+    public String getHoTenNV() {
+        return ho + " " + tenDem + " " + ten;
+    }
+
     @Override
     public Object[] getObj(int i) {
         return new Object[]{
-            i, ma, ho + " " + tenDem + " " + ten, gioiTinh, getDate(), diaChi, soDT, cuaHang.getTen(), chucVu.getTen(), getNV(), trangThai.getTT()
+            i, ma, getHoTenNV(), gioiTinh, getDate(), diaChi, soDT, cuaHang.getTen(), chucVu.getTen(), getNV(), trangThai.getTT()
         };
     }
 

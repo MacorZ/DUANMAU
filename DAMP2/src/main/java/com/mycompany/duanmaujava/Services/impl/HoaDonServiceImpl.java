@@ -18,27 +18,27 @@ import java.util.List;
  * @author acer
  */
 public class HoaDonServiceImpl implements HoaDonService {
-    
+
     private static final HoaDonRepository REPO = new HoaDonRepositoryImpl();
-    
+
     @Override
     public List<HoaDonViewModel> getAll() {
-        return REPO.getAll();
+        return REPO.getAll().stream().map(t -> ConvertViewModel.getHoaDonViewModel(t)).toList();
     }
-    
+
     @Override
     public String save(HoaDonViewModel t) {
         REPO.save(ConvertViewModel.getHoaDon(t));
         return "";
     }
-    
+
     @Override
     public List<HoaDonViewModel> getAllByTrangThai(TrangThaiHoaDon trangThaiHoaDon) {
-        return REPO.getAllByTrangThai(trangThaiHoaDon);
+        return REPO.getAllByTrangThai(trangThaiHoaDon).stream().map(t -> ConvertViewModel.getHoaDonViewModel(t)).toList();
     }
-    
+
     @Override
-    public HoaDon getOne(HoaDonViewModel t) {
-        return REPO.getOne(ConvertViewModel.getHoaDon(t));
+    public HoaDonViewModel getOne(HoaDonViewModel t) {
+        return ConvertViewModel.getHoaDonViewModel(REPO.getOne(ConvertViewModel.getHoaDon(t)));
     }
 }

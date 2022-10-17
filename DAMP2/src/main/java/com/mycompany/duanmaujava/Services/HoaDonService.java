@@ -19,7 +19,7 @@ public interface HoaDonService {
 
     String save(HoaDonViewModel t);
 
-    HoaDon getOne(HoaDonViewModel t);
+    HoaDonViewModel getOne(HoaDonViewModel t);
 
     List<HoaDonViewModel> getAllByTrangThai(TrangThaiHoaDon trangThaiHoaDon);
 

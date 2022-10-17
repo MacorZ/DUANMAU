@@ -21,14 +21,9 @@ import org.hibernate.Transaction;
 public class HoaDonRepositoryImpl implements HoaDonRepository {
 
     @Override
-    public List<HoaDonViewModel> getAll() {
+    public List<HoaDon> getAll() {
         try ( Session session = hibernateUtil.getFACTORY().openSession();) {
-            String hql = """
-                         select new com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonReponse
-                         (hd.id,hd.ma,hd.ngayTao,hd.nhanVien.ho,hd.nhanVien.tenDem,hd.nhanVien.ten,hd.tinhTrang)
-                         from HoaDon hd
-                         """;
-            Query query = session.createQuery(hql);
+            Query query = session.createQuery("From HoaDon");
             return query.getResultList();
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,14 +88,9 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     }
 
     @Override
-    public List<HoaDonViewModel> getAllByTrangThai(TrangThaiHoaDon trangThaiHoaDon) {
+    public List<HoaDon> getAllByTrangThai(TrangThaiHoaDon trangThaiHoaDon) {
         try ( Session session = hibernateUtil.getFACTORY().openSession();) {
-            String hql = """
-                         select new com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonReponse
-                         (hd.id,hd.ma,hd.ngayTao,hd.nhanVien.ho,hd.nhanVien.tenDem,hd.nhanVien.ten,hd.tinhTrang)
-                         from HoaDon hd where hd.tinhTrang = :tt
-                         """;
-            Query query = session.createQuery(hql);
+            Query query = session.createQuery("From HoaDon hd where hd.tinhTrang = :tt");
             query.setParameter("tt", trangThaiHoaDon);
             return query.getResultList();
         } catch (Exception e) {

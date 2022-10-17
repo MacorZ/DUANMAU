@@ -507,7 +507,7 @@ public class ViewChucNangBanHang extends javax.swing.JFrame {
         checkRowSP = tblSanPham.getSelectedRow();
         ChiTietSanPhamViewModel chiTietSanPham = listSP.get(checkRowSP);
         String soLuongNhap = JOptionPane.showInputDialog(rootPane, "Vui lòng nhập số lượng:");
-        String valid = CHI_TIET_SAN_PHAM_SERVICE.validateSoLuong(soLuongNhap, chiTietSanPham.getSoLuong());
+        String valid = CHI_TIET_SAN_PHAM_SERVICE.validateSoLuong(soLuongNhap, chiTietSanPham.getSoLuongTon());
         if (!valid.equals("")) {
             tblSanPham.clearSelection();
             JOptionPane.showMessageDialog(rootPane, valid);

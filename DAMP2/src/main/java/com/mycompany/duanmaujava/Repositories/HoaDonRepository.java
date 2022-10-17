@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface HoaDonRepository {
 
-    List<HoaDonViewModel> getAll();
+    List<HoaDon> getAll();
 
     HoaDon getOne(HoaDon t);
 
@@ -27,5 +27,5 @@ public interface HoaDonRepository {
 
     boolean delete(HoaDon t);
 
-    List<HoaDonViewModel> getAllByTrangThai(TrangThaiHoaDon trangThaiHoaDon);
+    List<HoaDon> getAllByTrangThai(TrangThaiHoaDon trangThaiHoaDon);
 }

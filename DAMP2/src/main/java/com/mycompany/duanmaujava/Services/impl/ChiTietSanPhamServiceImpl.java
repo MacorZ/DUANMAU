@@ -31,7 +31,7 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
 
     @Override
     public List<ChiTietSanPhamViewModel> getAll() {
-        return REPO_CTSP.getList().stream().map(t -> ConvertViewModel.getSanPhamViewModel());
+        return REPO_CTSP.getList().stream().map(t -> ConvertViewModel.getChiTietSanPhamViewModel(t)).toList();
     }
 
     @Override
@@ -89,7 +89,7 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     @Override
     public List<ChiTietSanPhamViewModel> getListByTenSP(String tenSP, List<ChiTietSanPhamViewModel> list) {
 
-        return list.stream().filter((t) -> (t.getTen().indexOf(tenSP) >= 0)).toList();
+        return list.stream().filter((t) -> (t.getSanPham().getTen().indexOf(tenSP) >= 0)).toList();
 
     }
 

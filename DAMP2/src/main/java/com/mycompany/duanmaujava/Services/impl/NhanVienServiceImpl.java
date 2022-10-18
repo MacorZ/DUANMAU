@@ -26,33 +26,45 @@ public class NhanVienServiceImpl implements NhanVienService {
     
     @Override
     public String save(NhanVienViewModel t) {
-        
-        return "";
+        if (!NHAN_VIEN_REPOSITORY.checkSave(t.getMa())) {
+            return "Mã không được trùng";
+        }
+        return NHAN_VIEN_REPOSITORY.save(ConvertViewModel.getNhanVien(t)) ? "" : "Thêm thất bại";
     }
     
     @Override
     public NhanVienViewModel getOneById(String id) {
-        return null;
+        return ConvertViewModel.getNhanVienViewModel(NHAN_VIEN_REPOSITORY.getOneById(id));
     }
     
     @Override
     public String update(NhanVienViewModel t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (!NHAN_VIEN_REPOSITORY.checkUpdate(t.getMa(), t.getId())) {
+            return "Mã không được trùng";
+        }
+        return NHAN_VIEN_REPOSITORY.update(ConvertViewModel.getNhanVien(t)) ? "" : "Cập nhật thất bại";
     }
     
     @Override
     public String delete(NhanVienViewModel t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (!NHAN_VIEN_REPOSITORY.checkDelete(t.getId())) {
+            return "Không thể xóa nhân viên này";
+        }
+        return NHAN_VIEN_REPOSITORY.delete(ConvertViewModel.getNhanVien(t)) ? "" : "Xóa thất bại";
     }
     
     @Override
     public NhanVienViewModel getOneByMa(String ma) {
         return ConvertViewModel.getNhanVienViewModel(NHAN_VIEN_REPOSITORY.getOneByMa(ma));
     }
-
+    
     @Override
     public List<NhanVienViewModel> getListGuiBC() {
-         return NHAN_VIEN_REPOSITORY.getListGuiBC().stream().map(t -> ConvertViewModel.getNhanVienViewModel(t)).toList();
+        return NHAN_VIEN_REPOSITORY.getListGuiBC().stream().map(t -> ConvertViewModel.getNhanVienViewModel(t)).toList();
     }
     
+    public static void main(String[] args) {
+        NhanVienService nhanVienService = new NhanVienServiceImpl();
+        System.out.println(nhanVienService.getList());
+    }
 }

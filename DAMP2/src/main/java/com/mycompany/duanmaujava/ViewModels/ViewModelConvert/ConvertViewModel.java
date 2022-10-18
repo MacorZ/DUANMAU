@@ -46,7 +46,12 @@ public class ConvertViewModel {
         if (nhanVien.getNhanVien() == null) {
             return nv;
         }
-        return nv.builder().idBC(nhanVien.getNhanVien().getId()).tenBC(nhanVien.getNhanVien().getTen()).build();
+        return NhanVienViewModel.builder().id(nhanVien.getId()).ma(nhanVien.getMa()).ten(nhanVien.getTen()).
+                tenDem(nhanVien.getTenDem()).ho(nhanVien.getHo()).ngaySinh(nhanVien.getNgaySinh()).diaChi(nhanVien.getDiaChi()).
+                gioiTinh(nhanVien.getGioiTinh()).soDT(nhanVien.getSoDT()).matKhau(nhanVien.getMatKhau())
+                .chucVu(getChucVuViewModel(nhanVien.getChucVu()))
+                .cuaHang(getCuaHangViewModel(nhanVien.getCuaHang()))
+                .trangThai(nhanVien.getTrangThai()).idBC(nhanVien.getNhanVien().getId()).tenBC(nhanVien.getNhanVien().getTen()).build();
     }
 
     public static ChucVuViewModel getChucVuViewModel(ChucVu chucVu) {
@@ -68,6 +73,13 @@ public class ConvertViewModel {
     }
 
     public static NhanVien getNhanVien(NhanVienViewModel nhanVienViewModel) {
+        if (nhanVienViewModel.getIdBC() == null) {
+            return NhanVien.builder().id(nhanVienViewModel.getId()).ma(nhanVienViewModel.getMa()).ten(nhanVienViewModel.getTen()).tenDem(nhanVienViewModel.getTenDem()).
+                    ho(nhanVienViewModel.getHo()).gioiTinh(nhanVienViewModel.getGioiTinh()).ngaySinh(nhanVienViewModel.getNgaySinh()).matKhau(nhanVienViewModel.getMatKhau()).
+                    diaChi(nhanVienViewModel.getDiaChi()).soDT(nhanVienViewModel.getSoDT()).chucVu(getChucVu(nhanVienViewModel.getChucVu())).
+                    cuaHang(getCuaHang(nhanVienViewModel.getCuaHang())).
+                    trangThai(nhanVienViewModel.getTrangThai()).build();
+        }
         return NhanVien.builder().id(nhanVienViewModel.getId()).ma(nhanVienViewModel.getMa()).ten(nhanVienViewModel.getTen()).tenDem(nhanVienViewModel.getTenDem()).
                 ho(nhanVienViewModel.getHo()).gioiTinh(nhanVienViewModel.getGioiTinh()).ngaySinh(nhanVienViewModel.getNgaySinh()).matKhau(nhanVienViewModel.getMatKhau()).
                 diaChi(nhanVienViewModel.getDiaChi()).soDT(nhanVienViewModel.getSoDT()).chucVu(getChucVu(nhanVienViewModel.getChucVu())).

@@ -44,15 +44,25 @@ public class NhanVienViewModel implements GetObject {
         return dateFormat.format(ngaySinh);
 
     }
+
     public String getHoTenNV() {
         return ho + " " + tenDem + " " + ten;
+    }
+
+    public String getGuiBC() {
+        return idBC == null ? "Trống" : tenBC;
     }
 
     @Override
     public Object[] getObj(int i) {
         return new Object[]{
-            i, ma, getHoTenNV(), gioiTinh, getDate(), diaChi, soDT, cuaHang.getTen(), chucVu.getTen(), tenBC, trangThai.getTT()
+            i, ma, getHoTenNV(), gioiTinh, getDate(), diaChi, matKhau, soDT, cuaHang.getTen(), chucVu.getTen(), getGuiBC(), trangThai.getTT()
         };
+    }
+
+    @Override
+    public String toString() {
+        return getHoTenNV();
     }
 
 }

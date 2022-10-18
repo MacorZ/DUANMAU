@@ -78,9 +78,9 @@
                                               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                                               <Component id="btnViewNhanVienReset" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="jPanel6" min="-2" pref="818" max="-2" attributes="0"/>
+                                          <Component id="jPanel6" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="147" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -104,7 +104,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jlViewNhanVienError" min="-2" pref="34" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" pref="259" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" pref="271" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -148,40 +148,47 @@
                               </Group>
                               <Component id="cbbViewNhanVienGuiBC" min="-2" pref="145" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel17" min="-2" pref="87" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="pwViewNhanVienPass" max="32767" attributes="0"/>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel17" min="-2" pref="87" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="pwViewNhanVienPass" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel16" min="-2" pref="87" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtViewNhanVienDiaChi" min="-2" pref="210" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel19" min="-2" pref="87" max="-2" attributes="0"/>
+                                          <Component id="jLabel22" min="-2" pref="36" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="cbbViewNhanVienCV" min="-2" pref="145" max="-2" attributes="0"/>
+                                          <Component id="txtViewNhanVienSdt" min="-2" pref="190" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel18" min="-2" pref="87" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbbViewNhanVienCH" min="-2" pref="145" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel19" min="-2" pref="87" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cbbViewNhanVienCV" min="-2" pref="145" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jLabel21" min="-2" pref="87" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cbbViewNhanVienTT" min="-2" pref="145" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel15" min="-2" pref="87" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="dateViewNhanVienNgaySinhNV" min="-2" pref="133" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel16" min="-2" pref="87" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtViewNhanVienDiaChi" min="-2" pref="210" max="-2" attributes="0"/>
+                                  <Component id="jLabel15" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="dateViewNhanVienNgaySinhNV" min="-2" pref="210" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="231" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cbbViewNhanVienTT" min="-2" pref="145" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -217,6 +224,8 @@
                               <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtViewNhanVienHoNV" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cbbViewNhanVienCH" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbbViewNhanVienTT" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -230,14 +239,23 @@
                                   <Component id="rdViewNhanVienNu" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbbViewNhanVienTT" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbbViewNhanVienGuiBC" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbbViewNhanVienGuiBC" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtViewNhanVienSdt" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -393,22 +411,38 @@
                 </Component>
                 <Component class="javax.swing.JPasswordField" name="pwViewNhanVienPass">
                 </Component>
+                <Component class="javax.swing.JLabel" name="jLabel22">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="S&#x110;T"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtViewNhanVienSdt">
+                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JButton" name="btnViewNhanVienSave">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewNhanVienSaveActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnViewNhanVienUpdate">
               <Properties>
                 <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewNhanVienUpdateActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnViewNhanVienDelete">
               <Properties>
                 <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewNhanVienDeleteActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnViewNhanVienReset">
               <Properties>
@@ -439,7 +473,7 @@
                 <Component class="javax.swing.JTable" name="tblNhanVien">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="11" rowCount="4">
+                      <Table columnCount="12" rowCount="4">
                         <Column editable="true" title="STT" type="java.lang.Object"/>
                         <Column editable="true" title="M&#xe3; nh&#xe2;n vi&#xea;n" type="java.lang.Object"/>
                         <Column editable="true" title="H&#x1ecd; t&#xea;n" type="java.lang.Object"/>
@@ -447,6 +481,7 @@
                         <Column editable="true" title="Ng&#xe0;y sinh" type="java.lang.Object"/>
                         <Column editable="true" title="&#x110;&#x1ecb;a ch&#x1ec9;" type="java.lang.Object"/>
                         <Column editable="true" title="M&#x1ead;t kh&#x1ea9;u" type="java.lang.Object"/>
+                        <Column editable="true" title="S&#x1ed1; &#x111;i&#x1ec7;n tho&#x1ea1;i" type="java.lang.Object"/>
                         <Column editable="true" title="C&#x1eed;a h&#xe0;ng" type="java.lang.Object"/>
                         <Column editable="true" title="Ch&#x1ee9;c v&#x1ee5;" type="java.lang.Object"/>
                         <Column editable="true" title="G&#x1eed;i BC" type="java.lang.Object"/>
@@ -510,12 +545,20 @@
                           <Editor/>
                           <Renderer/>
                         </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                       </TableColumnModel>
                     </Property>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblNhanVienMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

@@ -4,6 +4,7 @@
  */
 package com.mycompany.duanmaujava.Utilities;
 
+import com.mycompany.duanmaujava.DomainModels.NhanVien;
 import java.math.BigDecimal;
 
 /**
@@ -31,6 +32,7 @@ public class Validate {
         }
         return true;
     }
+
     public static boolean checkFormatInt(String... strings) {
         for (String string : strings) {
             try {
@@ -41,12 +43,29 @@ public class Validate {
         }
         return true;
     }
+
     public static boolean checkFormatSmallerThanRezo(Double... doubles) {
         for (Double aDouble : doubles) {
-            if(aDouble <= 0){
-                return false;  
+            if (aDouble <= 0) {
+                return false;
             }
         }
         return true;
+    }
+
+    public static boolean checkString(String... strings) {
+        String regex = "^(([a-zA-Z\\sÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦ"
+                + "ẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]*)([a-zA-Z\\s\\'ÀÁÂÃÈÉÊÌÍ"
+                + "ÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủ"
+                + "ứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]*)([a-zA-Z\\sÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯ"
+                + "ẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]))*$";
+        for (String string : strings) {
+            if (!string.matches(regex)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args) {
     }
 }

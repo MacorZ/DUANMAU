@@ -9,6 +9,7 @@ import com.mycompany.duanmaujava.DomainModels.ChucVu;
 import com.mycompany.duanmaujava.DomainModels.CuaHang;
 import com.mycompany.duanmaujava.DomainModels.DongSP;
 import com.mycompany.duanmaujava.DomainModels.HoaDon;
+import com.mycompany.duanmaujava.DomainModels.HoaDonchiTiet;
 import com.mycompany.duanmaujava.DomainModels.MauSac;
 import com.mycompany.duanmaujava.DomainModels.NhaSanXuat;
 import com.mycompany.duanmaujava.DomainModels.NhanVien;
@@ -36,16 +37,20 @@ public class ConvertViewModel {
     }
 
     public static NhanVienViewModel getNhanVienViewModel(NhanVien nhanVien) {
-        return NhanVienViewModel.builder().id(nhanVien.getId()).ma(nhanVien.getMa()).ten(nhanVien.getTen()).
+        NhanVienViewModel nv = NhanVienViewModel.builder().id(nhanVien.getId()).ma(nhanVien.getMa()).ten(nhanVien.getTen()).
                 tenDem(nhanVien.getTenDem()).ho(nhanVien.getHo()).ngaySinh(nhanVien.getNgaySinh()).diaChi(nhanVien.getDiaChi()).
                 gioiTinh(nhanVien.getGioiTinh()).soDT(nhanVien.getSoDT()).matKhau(nhanVien.getMatKhau())
                 .chucVu(getChucVuViewModel(nhanVien.getChucVu()))
-                .cuaHang(getCuaHangViewModel(nhanVien.getCuaHang())).nhanVien(getNhanVienViewModel(nhanVien.getNhanVien()))
+                .cuaHang(getCuaHangViewModel(nhanVien.getCuaHang()))
                 .trangThai(nhanVien.getTrangThai()).build();
+        if (nhanVien.getNhanVien() == null) {
+            return nv;
+        }
+        return nv.builder().idBC(nhanVien.getNhanVien().getId()).tenBC(nhanVien.getNhanVien().getTen()).build();
     }
 
     public static ChucVuViewModel getChucVuViewModel(ChucVu chucVu) {
-        return new ChucVuViewModel(chucVu.getId(), chucVu.getMa(), chucVu.getTen());
+        return ChucVuViewModel.builder().id(chucVu.getId()).ma(chucVu.getMa()).ten(chucVu.getTen()).build();
     }
 
     public static CuaHangViewModel getCuaHangViewModel(CuaHang cuaHang) {
@@ -66,7 +71,7 @@ public class ConvertViewModel {
         return NhanVien.builder().id(nhanVienViewModel.getId()).ma(nhanVienViewModel.getMa()).ten(nhanVienViewModel.getTen()).tenDem(nhanVienViewModel.getTenDem()).
                 ho(nhanVienViewModel.getHo()).gioiTinh(nhanVienViewModel.getGioiTinh()).ngaySinh(nhanVienViewModel.getNgaySinh()).matKhau(nhanVienViewModel.getMatKhau()).
                 diaChi(nhanVienViewModel.getDiaChi()).soDT(nhanVienViewModel.getSoDT()).chucVu(getChucVu(nhanVienViewModel.getChucVu())).
-                cuaHang(getCuaHang(nhanVienViewModel.getCuaHang())).nhanVien(getNhanVien(nhanVienViewModel.getNhanVien())).
+                cuaHang(getCuaHang(nhanVienViewModel.getCuaHang())).nhanVien(NhanVien.builder().id(nhanVienViewModel.getIdBC()).build()).
                 trangThai(nhanVienViewModel.getTrangThai()).build();
     }
 
@@ -103,8 +108,13 @@ public class ConvertViewModel {
 
     public static HoaDonViewModel getHoaDonViewModel(HoaDon hoaDon) {
         return HoaDonViewModel.builder().id(hoaDon.getId()).diaChi(hoaDon.getDiaChi()).ma(hoaDon.getMa())
-                .ngayTao(hoaDon.getNgayTao()).nhanVien(getNhanVienViewModel(hoaDon.getNhanVien())).tinhTrang(hoaDon.getTinhTrang())
-                .ngayTao(hoaDon.getNgayTao()).ngayShip(hoaDon.getNgayShip()).ngayNhan(hoaDon.getNgayNhan())
-                .tenNguoiNhan(hoaDon.getTenNguoiNhan()).soDT(hoaDon.getSoDT()).ngayThanhToan(hoaDon.getNgayThanhToan()).build();
+                .ngayTao(hoaDon.getNgayTao()).nhanVien(getNhanVienViewModel(hoaDon.getNhanVien())).tinhTrang(hoaDon.getTinhTrang()).build();
+
+    }
+
+    public static SanPhamDaChonViewModel getSanPhamDaChonViewModel(HoaDonchiTiet hoaDonchiTiet) {
+        return SanPhamDaChonViewModel.builder().id(hoaDonchiTiet.getIdChiTietSP().getId()).
+                ma(hoaDonchiTiet.getIdChiTietSP().getSanPham().getMa()).ten(hoaDonchiTiet.getIdChiTietSP().getSanPham().getTen())
+                .donGia(hoaDonchiTiet.getIdChiTietSP().getGiaBan()).soLuong(hoaDonchiTiet.getSoLuong()).build();
     }
 }

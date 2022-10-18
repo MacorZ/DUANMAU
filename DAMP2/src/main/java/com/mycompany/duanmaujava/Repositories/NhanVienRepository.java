@@ -15,6 +15,8 @@ public interface NhanVienRepository {
 
     List<NhanVien> getList();
 
+    List<NhanVien> getListGuiBC();
+
     NhanVien getOneById(String id);
 
     NhanVien getOneByMa(String ma);

@@ -22,8 +22,7 @@ public interface HoaDonChiTietRepository {
     HoaDonchiTiet update(HoaDonchiTiet t);
 
     boolean delete(HoaDonchiTiet t);
-    
-    List<SanPhamDaChonViewModel> getSanPhamDaChonByMaHD(String id);
-    
+        
     boolean getByIdChiTietSanPham(String id);
+    List<HoaDonchiTiet> getAllByIdHoaDon(String id);
 }

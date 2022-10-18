@@ -31,7 +31,7 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
     }
 
     @Override
-    public NhanVien getOneByMa(String ma ) {
+    public NhanVien getOneByMa(String ma) {
         try ( Session session = hibernateUtil.getFACTORY().openSession();) {
             String hql = "select nv from NhanVien nv where nv.ma = :ma";
             Query query = session.createQuery(hql);
@@ -123,9 +123,21 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
     }
 
     @Override
-    public NhanVien getOneById(String id ) {
+    public NhanVien getOneById(String id) {
         try ( Session session = hibernateUtil.getFACTORY().openSession();) {
             return session.get(NhanVien.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<NhanVien> getListGuiBC() {
+        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
+            String hql = "From NhanVien nv where nv.nhanVien is null ";
+            Query query = session.createQuery(hql);
+            return query.getResultList();
         } catch (Exception e) {
             e.printStackTrace();
         }

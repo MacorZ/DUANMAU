@@ -449,10 +449,10 @@ public class ViewChucNangBanHang extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        NhanVienViewModel nhanVien = NHAN_VIEN_SERVICE.getOneByMa("NV01");
-        HoaDonViewModel hoaDonViewModel = HoaDonViewModel.builder().ma(MaTuSinh.genMaTuSinh("HD")).
+        NhanVienViewModel nhanVien = NHAN_VIEN_SERVICE.getOneByMa("NV02");
+        hoaDon = HoaDonViewModel.builder().ma(MaTuSinh.genMaTuSinh("HD")).
                 ngayTao(new Date()).diaChi("HN").nhanVien(nhanVien).tinhTrang(TrangThaiHoaDon.CHO_THANH_TOAN).build();
-        HOA_DON_SERVICE.save(hoaDonViewModel);
+        HOA_DON_SERVICE.save(hoaDon);
         fillFormHoaDon(hoaDon);
         fillHoaDon();
         listGH.clear();

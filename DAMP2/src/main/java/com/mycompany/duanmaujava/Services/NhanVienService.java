@@ -16,6 +16,8 @@ public interface NhanVienService {
 
     List<NhanVienViewModel> getList();
 
+    List<NhanVienViewModel> getListGuiBC();
+
     String save(NhanVienViewModel t);
 
     String update(NhanVienViewModel t);
@@ -23,6 +25,6 @@ public interface NhanVienService {
     String delete(NhanVienViewModel t);
 
     NhanVienViewModel getOneById(String id);
-    
+
     NhanVienViewModel getOneByMa(String id);
 }

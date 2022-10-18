@@ -63,23 +63,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     }
 
     @Override
-    public List<SanPhamDaChonViewModel> getSanPhamDaChonByMaHD(String id) {
-        try ( Session session = hibernateUtil.getFACTORY().openSession();) {
-            String hql = """
-                         select new com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonResponse
-                         (hdct.IdChiTietSP.id,hdct.IdChiTietSP.sanPham.ma,hdct.IdChiTietSP.sanPham.ten,hdct.soLuong,hdct.IdChiTietSP.giaBan)
-                         from HoaDonchiTiet hdct where hdct.IdHoaDon.id = :id
-                         """;
-            Query query = session.createQuery(hql);
-            query.setParameter("id", id);
-            return query.getResultList();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    @Override
     public boolean getByIdChiTietSanPham(String id) {
         try ( Session session = hibernateUtil.getFACTORY().openSession();) {
             String hql = "select hd from HoaDonchiTiet hd where hd.IdChiTietSP.id = :id";
@@ -94,5 +77,16 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
 
         return true;
     }
+
+    @Override
+    public List<HoaDonchiTiet> getAllByIdHoaDon(String id) {
+ try ( Session session = hibernateUtil.getFACTORY().openSession();) {
+            Query query = session.createQuery(" from HoaDonchiTiet hdct where hdct.IdHoaDon.id = :id");
+            query.setParameter("id", id);
+            return query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;    }
 
 }

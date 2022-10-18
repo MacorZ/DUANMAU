@@ -35,7 +35,8 @@ public class NhanVienViewModel implements GetObject {
     private String matKhau;
     private CuaHangViewModel cuaHang;
     private ChucVuViewModel chucVu;
-    private NhanVienViewModel nhanVien;
+    private String idBC;
+    private String tenBC;
     private TrangThaiNhanVien trangThai;
 
     public String getDate() {
@@ -43,11 +44,6 @@ public class NhanVienViewModel implements GetObject {
         return dateFormat.format(ngaySinh);
 
     }
-
-    public String getNV() {
-        return nhanVien == null ? "Trống" : nhanVien.getTen();
-    }
-
     public String getHoTenNV() {
         return ho + " " + tenDem + " " + ten;
     }
@@ -55,7 +51,7 @@ public class NhanVienViewModel implements GetObject {
     @Override
     public Object[] getObj(int i) {
         return new Object[]{
-            i, ma, getHoTenNV(), gioiTinh, getDate(), diaChi, soDT, cuaHang.getTen(), chucVu.getTen(), getNV(), trangThai.getTT()
+            i, ma, getHoTenNV(), gioiTinh, getDate(), diaChi, soDT, cuaHang.getTen(), chucVu.getTen(), tenBC, trangThai.getTT()
         };
     }
 

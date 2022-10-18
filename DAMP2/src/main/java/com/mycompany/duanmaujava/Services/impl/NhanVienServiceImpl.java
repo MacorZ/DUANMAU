@@ -49,5 +49,10 @@ public class NhanVienServiceImpl implements NhanVienService {
     public NhanVienViewModel getOneByMa(String ma) {
         return ConvertViewModel.getNhanVienViewModel(NHAN_VIEN_REPOSITORY.getOneByMa(ma));
     }
+
+    @Override
+    public List<NhanVienViewModel> getListGuiBC() {
+         return NHAN_VIEN_REPOSITORY.getListGuiBC().stream().map(t -> ConvertViewModel.getNhanVienViewModel(t)).toList();
+    }
     
 }

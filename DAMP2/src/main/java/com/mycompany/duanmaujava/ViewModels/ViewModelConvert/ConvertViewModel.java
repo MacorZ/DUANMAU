@@ -10,6 +10,7 @@ import com.mycompany.duanmaujava.DomainModels.CuaHang;
 import com.mycompany.duanmaujava.DomainModels.DongSP;
 import com.mycompany.duanmaujava.DomainModels.HoaDon;
 import com.mycompany.duanmaujava.DomainModels.HoaDonchiTiet;
+import com.mycompany.duanmaujava.DomainModels.KhachHang;
 import com.mycompany.duanmaujava.DomainModels.MauSac;
 import com.mycompany.duanmaujava.DomainModels.NhaSanXuat;
 import com.mycompany.duanmaujava.DomainModels.NhanVien;
@@ -19,6 +20,7 @@ import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChucVuViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.CuaHangViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.DongSanPhamViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonViewModel;
+import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.KhachHangViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.MauSacViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.NhaSanXuatViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.NhanVienViewModel;
@@ -128,5 +130,8 @@ public class ConvertViewModel {
         return SanPhamDaChonViewModel.builder().id(hoaDonchiTiet.getIdChiTietSP().getId()).
                 ma(hoaDonchiTiet.getIdChiTietSP().getSanPham().getMa()).ten(hoaDonchiTiet.getIdChiTietSP().getSanPham().getTen())
                 .donGia(hoaDonchiTiet.getIdChiTietSP().getGiaBan()).soLuong(hoaDonchiTiet.getSoLuong()).build();
+    }
+    public static KhachHangViewModel getKhachHangViewModel(KhachHang khachHang){
+        
     }
 }

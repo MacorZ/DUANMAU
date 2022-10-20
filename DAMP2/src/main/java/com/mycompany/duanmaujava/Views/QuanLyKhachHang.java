@@ -9,7 +9,7 @@ package com.mycompany.duanmaujava.Views;
  * @author acer
  */
 public class QuanLyKhachHang extends javax.swing.JFrame {
-
+private static final KhachHang
     /**
      * Creates new form QuanLyKhachHang
      */

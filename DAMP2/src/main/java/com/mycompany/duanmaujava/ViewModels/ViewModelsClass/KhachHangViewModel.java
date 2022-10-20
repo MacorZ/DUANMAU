@@ -30,5 +30,6 @@ public class KhachHangViewModel {
     private String thanhPho;
     private String quocGia;
     private Date ngaySinh;
+    private String matKhau;
 
 }

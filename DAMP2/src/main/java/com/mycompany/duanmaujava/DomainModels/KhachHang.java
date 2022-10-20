@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
@@ -24,6 +25,7 @@ import org.hibernate.annotations.Nationalized;
 @Entity
 @Table(name = "KhachHang")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class KhachHang implements Serializable{

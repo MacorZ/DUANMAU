@@ -105,7 +105,7 @@ public class KhachHangRepositoryImpl implements KhachHangRepository {
     @Override
     public boolean checkDelete(String id) {
         try ( Session session = hibernateUtil.getFACTORY().openSession();) {
-            String hql = "from KhachHang kh where kh.id != :id ";
+            String hql = "from  HoaDon hd where hd.khachHang.id != :id ";
             Query query = session.createQuery(hql);
             query.setParameter("id", id);
             return query.getResultList().isEmpty();

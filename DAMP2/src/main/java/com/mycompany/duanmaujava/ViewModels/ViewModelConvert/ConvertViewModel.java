@@ -131,7 +131,18 @@ public class ConvertViewModel {
                 ma(hoaDonchiTiet.getIdChiTietSP().getSanPham().getMa()).ten(hoaDonchiTiet.getIdChiTietSP().getSanPham().getTen())
                 .donGia(hoaDonchiTiet.getIdChiTietSP().getGiaBan()).soLuong(hoaDonchiTiet.getSoLuong()).build();
     }
-    public static KhachHangViewModel getKhachHangViewModel(KhachHang khachHang){
-        
+
+    public static KhachHangViewModel getKhachHangViewModel(KhachHang khachHang) {
+        return KhachHangViewModel.builder().id(khachHang.getId()).ma(khachHang.getMa()).ten(khachHang.getTen())
+                .tenDem(khachHang.getTenDem()).ho(khachHang.getHo()).diaChi(khachHang.getDiaChi()).thanhPho(khachHang.getThanhPho())
+                .quocGia(khachHang.getQuocGia()).ngaySinh(khachHang.getNgaySinh()).matKhau(khachHang.getMatKhau()).build();
+
+    }
+
+    public static KhachHang getKhachHang(KhachHangViewModel khachHang) {
+        return KhachHang.builder().id(khachHang.getId()).ma(khachHang.getMa()).ten(khachHang.getTen())
+                .tenDem(khachHang.getTenDem()).ho(khachHang.getHo()).diaChi(khachHang.getDiaChi()).thanhPho(khachHang.getThanhPho())
+                .quocGia(khachHang.getQuocGia()).ngaySinh(khachHang.getNgaySinh()).matKhau(khachHang.getMatKhau()).build();
+
     }
 }

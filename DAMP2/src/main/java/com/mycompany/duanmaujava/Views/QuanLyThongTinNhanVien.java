@@ -1136,7 +1136,7 @@ private void getTableChucVu(List<ChucVuViewModel> list) {
             jlViewNhanVienError.setText("Không để trống dữ liệu");
             return null;
         }
-        if (!Validate.checkString(ten, tenDem, ho)) {
+        if (!Validate.checkName(ten, tenDem, ho)) {
             jlViewNhanVienError.setText("Họ,tên đệm,tên nhân viên không hợp lệ");
             return null;
         }

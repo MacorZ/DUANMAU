@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author acer
  */
-public interface ChucVuService {
+public interface ChucVuService  {
 
     List<ChucVuViewModel> getList();
 

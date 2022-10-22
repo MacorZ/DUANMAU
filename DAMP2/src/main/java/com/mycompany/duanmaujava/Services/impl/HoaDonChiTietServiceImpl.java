@@ -15,7 +15,7 @@ import com.mycompany.duanmaujava.Repositories.impl.HoaDonChiTietRepositoryImpl;
 import com.mycompany.duanmaujava.Repositories.impl.HoaDonRepositoryImpl;
 import com.mycompany.duanmaujava.Services.ChiTietHoaDonService;
 import com.mycompany.duanmaujava.Utilities.Enums.TrangThaiHoaDon;
-import com.mycompany.duanmaujava.ViewModels.ViewModelConvert.ConvertViewModel;
+import com.mycompany.duanmaujava.ViewModels.ViewModelConvert.ConvertClass;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonViewModel;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -87,7 +87,7 @@ public class HoaDonChiTietServiceImpl implements ChiTietHoaDonService {
     public LinkedHashMap<String, SanPhamDaChonViewModel> getSanPhamDaChonByMaHD(String id) {
 
         Map<String, SanPhamDaChonViewModel> map = REPO_HDCT.getAllByIdHoaDon(id)
-                .stream().map(t -> ConvertViewModel.getSanPhamDaChonViewModel(t))
+                .stream().map(t -> ConvertClass.getSanPhamDaChonViewModel(t))
                 .collect(Collectors.toMap(SanPhamDaChonViewModel::getId, Function.identity()));
         return new LinkedHashMap<>(map);
 

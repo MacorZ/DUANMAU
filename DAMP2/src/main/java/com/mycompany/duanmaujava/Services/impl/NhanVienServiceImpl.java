@@ -7,7 +7,7 @@ package com.mycompany.duanmaujava.Services.impl;
 import com.mycompany.duanmaujava.Repositories.NhanVienRepository;
 import com.mycompany.duanmaujava.Repositories.impl.NhanVienRepositoryImpl;
 import com.mycompany.duanmaujava.Services.NhanVienService;
-import com.mycompany.duanmaujava.ViewModels.ViewModelConvert.ConvertViewModel;
+import com.mycompany.duanmaujava.ViewModels.ViewModelConvert.ConvertClass;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.NhanVienViewModel;
 import java.util.List;
 
@@ -16,53 +16,53 @@ import java.util.List;
  * @author acer
  */
 public class NhanVienServiceImpl implements NhanVienService {
-    
+
     private static final NhanVienRepository NHAN_VIEN_REPOSITORY = new NhanVienRepositoryImpl();
-    
+
     @Override
     public List<NhanVienViewModel> getList() {
-        return NHAN_VIEN_REPOSITORY.getList().stream().map(t -> ConvertViewModel.getNhanVienViewModel(t)).toList();
+        return NHAN_VIEN_REPOSITORY.getList().stream().map(t -> ConvertClass.getNhanVienViewModel(t)).toList();
     }
-    
+
     @Override
     public String save(NhanVienViewModel t) {
         if (!NHAN_VIEN_REPOSITORY.checkSave(t.getMa())) {
             return "Mã không được trùng";
         }
-        return NHAN_VIEN_REPOSITORY.save(ConvertViewModel.getNhanVien(t)) ? "" : "Thêm thất bại";
+        return NHAN_VIEN_REPOSITORY.save(ConvertClass.getNhanVien(t)) ? "" : "Thêm thất bại";
     }
-    
+
     @Override
     public NhanVienViewModel getOneById(String id) {
-        return ConvertViewModel.getNhanVienViewModel(NHAN_VIEN_REPOSITORY.getOneById(id));
+        return ConvertClass.getNhanVienViewModel(NHAN_VIEN_REPOSITORY.getOneById(id));
     }
-    
+
     @Override
     public String update(NhanVienViewModel t) {
         if (!NHAN_VIEN_REPOSITORY.checkUpdate(t.getMa(), t.getId())) {
             return "Mã không được trùng";
         }
-        return NHAN_VIEN_REPOSITORY.update(ConvertViewModel.getNhanVien(t)) ? "" : "Cập nhật thất bại";
+        return NHAN_VIEN_REPOSITORY.update(ConvertClass.getNhanVien(t)) ? "" : "Cập nhật thất bại";
     }
-    
+
     @Override
     public String delete(NhanVienViewModel t) {
         if (!NHAN_VIEN_REPOSITORY.checkDelete(t.getId())) {
             return "Không thể xóa nhân viên này";
         }
-        return NHAN_VIEN_REPOSITORY.delete(ConvertViewModel.getNhanVien(t)) ? "" : "Xóa thất bại";
+        return NHAN_VIEN_REPOSITORY.delete(ConvertClass.getNhanVien(t)) ? "" : "Xóa thất bại";
     }
-    
+
     @Override
     public NhanVienViewModel getOneByMa(String ma) {
-        return ConvertViewModel.getNhanVienViewModel(NHAN_VIEN_REPOSITORY.getOneByMa(ma));
+        return ConvertClass.getNhanVienViewModel(NHAN_VIEN_REPOSITORY.getOneByMa(ma));
     }
-    
+
     @Override
     public List<NhanVienViewModel> getListGuiBC() {
-        return NHAN_VIEN_REPOSITORY.getListGuiBC().stream().map(t -> ConvertViewModel.getNhanVienViewModel(t)).toList();
+        return NHAN_VIEN_REPOSITORY.getListGuiBC().stream().map(t -> ConvertClass.getNhanVienViewModel(t)).toList();
     }
-    
+
     public static void main(String[] args) {
         NhanVienService nhanVienService = new NhanVienServiceImpl();
         System.out.println(nhanVienService.getList());

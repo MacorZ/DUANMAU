@@ -5,7 +5,7 @@
 package com.mycompany.duanmaujava.Services.impl;
 
 import com.mycompany.duanmaujava.DomainModels.ChiTietSanPham;
-import com.mycompany.duanmaujava.ViewModels.ViewModelConvert.ConvertViewModel;
+import com.mycompany.duanmaujava.ViewModels.ViewModelConvert.ConvertClass;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChiTietSanPhamViewModel;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamDaChonViewModel;
 import com.mycompany.duanmaujava.Repositories.ChiTietSanPhamRepository;
@@ -31,7 +31,7 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
 
     @Override
     public List<ChiTietSanPhamViewModel> getAll() {
-        return REPO_CTSP.getList().stream().map(t -> ConvertViewModel.getChiTietSanPhamViewModel(t)).toList();
+        return REPO_CTSP.getList().stream().map(t -> ConvertClass.getChiTietSanPhamViewModel(t)).toList();
     }
 
     @Override
@@ -55,7 +55,7 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     @Override
     public LinkedHashMap<String, SanPhamDaChonViewModel> addSanPhamVaoGioHang(LinkedHashMap<String, SanPhamDaChonViewModel> gioHang, ChiTietSanPhamViewModel chiTietSanPhamResponse, int soLuong) {
         ChiTietSanPham chiTietSanPham = REPO_CTSP.getOne(ChiTietSanPham.builder().id(chiTietSanPhamResponse.getId()).build());
-        SanPhamDaChonViewModel sanPhamDaChonResponse = ConvertViewModel.getSanPhamDaChonReponse(chiTietSanPham);
+        SanPhamDaChonViewModel sanPhamDaChonResponse = ConvertClass.getSanPhamDaChonReponse(chiTietSanPham);
         sanPhamDaChonResponse.setSoLuong(soLuong);
         gioHang.put(chiTietSanPhamResponse.getId(), sanPhamDaChonResponse);
         return gioHang;

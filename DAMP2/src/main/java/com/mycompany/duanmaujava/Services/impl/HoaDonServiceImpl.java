@@ -9,7 +9,7 @@ import com.mycompany.duanmaujava.Repositories.HoaDonRepository;
 import com.mycompany.duanmaujava.Repositories.impl.HoaDonRepositoryImpl;
 import com.mycompany.duanmaujava.Services.HoaDonService;
 import com.mycompany.duanmaujava.Utilities.Enums.TrangThaiHoaDon;
-import com.mycompany.duanmaujava.ViewModels.ViewModelConvert.ConvertViewModel;
+import com.mycompany.duanmaujava.ViewModels.ViewModelConvert.ConvertClass;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.HoaDonViewModel;
 import java.util.List;
 
@@ -23,22 +23,22 @@ public class HoaDonServiceImpl implements HoaDonService {
 
     @Override
     public List<HoaDonViewModel> getAll() {
-        return REPO.getAll().stream().map(t -> ConvertViewModel.getHoaDonViewModel(t)).toList();
+        return REPO.getAll().stream().map(t -> ConvertClass.getHoaDonViewModel(t)).toList();
     }
 
     @Override
     public String save(HoaDonViewModel t) {
-        REPO.save(ConvertViewModel.getHoaDon(t));
+        REPO.save(ConvertClass.getHoaDon(t));
         return "";
     }
 
     @Override
     public List<HoaDonViewModel> getAllByTrangThai(TrangThaiHoaDon trangThaiHoaDon) {
-        return REPO.getAllByTrangThai(trangThaiHoaDon).stream().map(t -> ConvertViewModel.getHoaDonViewModel(t)).toList();
+        return REPO.getAllByTrangThai(trangThaiHoaDon).stream().map(t -> ConvertClass.getHoaDonViewModel(t)).toList();
     }
 
     @Override
     public HoaDonViewModel getOne(HoaDonViewModel t) {
-        return ConvertViewModel.getHoaDonViewModel(REPO.getOne(ConvertViewModel.getHoaDon(t)));
+        return ConvertClass.getHoaDonViewModel(REPO.getOne(ConvertClass.getHoaDon(t)));
     }
 }

@@ -8,7 +8,7 @@ import com.mycompany.duanmaujava.DomainModels.KhachHang;
 import com.mycompany.duanmaujava.Repositories.KhachHangRepository;
 import com.mycompany.duanmaujava.Repositories.impl.KhachHangRepositoryImpl;
 import com.mycompany.duanmaujava.Services.KhachHangService;
-import com.mycompany.duanmaujava.ViewModels.ViewModelConvert.ConvertViewModel;
+import com.mycompany.duanmaujava.ViewModels.ViewModelConvert.ConvertClass;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.KhachHangViewModel;
 import java.util.List;
 
@@ -22,12 +22,12 @@ public class KhachHangServiceImpl implements KhachHangService {
 
     @Override
     public List<KhachHangViewModel> getList() {
-        return KHACH_HANG_REPOSITORY.getList().stream().map(t -> ConvertViewModel.getKhachHangViewModel(t)).toList();
+        return KHACH_HANG_REPOSITORY.getList().stream().map(t -> ConvertClass.getKhachHangViewModel(t)).toList();
     }
 
     @Override
     public String save(KhachHangViewModel hangViewModel) {
-        KhachHang kh = ConvertViewModel.getKhachHang(hangViewModel);
+        KhachHang kh = ConvertClass.getKhachHang(hangViewModel);
         if (!KHACH_HANG_REPOSITORY.checkSave(kh.getMa())) {
             return "Mã không được trùng";
         }
@@ -36,7 +36,7 @@ public class KhachHangServiceImpl implements KhachHangService {
 
     @Override
     public String update(KhachHangViewModel hangViewModel) {
-        KhachHang kh = ConvertViewModel.getKhachHang(hangViewModel);
+        KhachHang kh = ConvertClass.getKhachHang(hangViewModel);
         if (!KHACH_HANG_REPOSITORY.checkUpdate(kh.getMa(),kh.getId())) {
             return "Mã không được trùng";
         }
@@ -45,9 +45,9 @@ public class KhachHangServiceImpl implements KhachHangService {
 
     @Override
     public String delete(KhachHangViewModel hangViewModel) {
-        KhachHang kh = ConvertViewModel.getKhachHang(hangViewModel);
+        KhachHang kh = ConvertClass.getKhachHang(hangViewModel);
         if (!KHACH_HANG_REPOSITORY.checkDelete(kh.getId())) {
-            return "Khoong ";
+            return "Không thể xóa khách hàng này";
         }
         return KHACH_HANG_REPOSITORY.delete(kh) ? "" : "Xóa thất bại";
     }

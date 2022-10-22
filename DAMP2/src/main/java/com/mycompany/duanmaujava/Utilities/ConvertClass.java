@@ -31,13 +31,13 @@ import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.SanPhamViewModel;
  *
  * @author acer
  */
-public class ConvertViewModel {
-
+public class ConvertClass {
+    
     public static SanPhamDaChonViewModel getSanPhamDaChonReponse(ChiTietSanPham chiTietSanPham) {
         return SanPhamDaChonViewModel.builder().id(chiTietSanPham.getId()).ma(chiTietSanPham.getSanPham().getMa()).ten(chiTietSanPham.getSanPham().getTen())
                 .donGia(chiTietSanPham.getGiaBan()).build();
     }
-
+    
     public static NhanVienViewModel getNhanVienViewModel(NhanVien nhanVien) {
         NhanVienViewModel nv = NhanVienViewModel.builder().id(nhanVien.getId()).ma(nhanVien.getMa()).ten(nhanVien.getTen()).
                 tenDem(nhanVien.getTenDem()).ho(nhanVien.getHo()).ngaySinh(nhanVien.getNgaySinh()).diaChi(nhanVien.getDiaChi()).
@@ -55,25 +55,25 @@ public class ConvertViewModel {
                 .cuaHang(getCuaHangViewModel(nhanVien.getCuaHang()))
                 .trangThai(nhanVien.getTrangThai()).idBC(nhanVien.getNhanVien().getId()).tenBC(nhanVien.getNhanVien().getTen()).build();
     }
-
+    
     public static ChucVuViewModel getChucVuViewModel(ChucVu chucVu) {
         return ChucVuViewModel.builder().id(chucVu.getId()).ma(chucVu.getMa()).ten(chucVu.getTen()).build();
     }
-
+    
     public static CuaHangViewModel getCuaHangViewModel(CuaHang cuaHang) {
         return new CuaHangViewModel(cuaHang.getId(), cuaHang.getMa(), cuaHang.getTen(), cuaHang.getDiaChi(), cuaHang.getThanhPho(), cuaHang.getQuocGia());
     }
-
+    
     public static CuaHang getCuaHang(CuaHangViewModel cuaHangViewModel) {
         return CuaHang.builder().ma(cuaHangViewModel.getMa())
                 .ten(cuaHangViewModel.getTen()).diaChi(cuaHangViewModel.getDiaChi()).
                 thanhPho(cuaHangViewModel.getThanhPho()).quocGia(cuaHangViewModel.getQuocGia()).id(cuaHangViewModel.getId()).build();
     }
-
+    
     public static ChucVu getChucVu(ChucVuViewModel chucVuViewModel) {
         return ChucVu.builder().ma(chucVuViewModel.getMa()).ten(chucVuViewModel.getTen()).id(chucVuViewModel.getId()).build();
     }
-
+    
     public static NhanVien getNhanVien(NhanVienViewModel nhanVienViewModel) {
         if (nhanVienViewModel.getIdBC() == null) {
             return NhanVien.builder().id(nhanVienViewModel.getId()).ma(nhanVienViewModel.getMa()).ten(nhanVienViewModel.getTen()).tenDem(nhanVienViewModel.getTenDem()).
@@ -88,28 +88,28 @@ public class ConvertViewModel {
                 cuaHang(getCuaHang(nhanVienViewModel.getCuaHang())).nhanVien(NhanVien.builder().id(nhanVienViewModel.getIdBC()).build()).
                 trangThai(nhanVienViewModel.getTrangThai()).build();
     }
-
+    
     public static HoaDon getHoaDon(HoaDonViewModel hoaDonViewModel) {
         return HoaDon.builder().id(hoaDonViewModel.getId()).ma(hoaDonViewModel.getMa()).ngayTao(hoaDonViewModel.getNgayTao())
                 .nhanVien(getNhanVien(hoaDonViewModel.getNhanVien())).tinhTrang(hoaDonViewModel.getTinhTrang()).build();
     }
-
+    
     public static SanPhamViewModel getSanPhamViewModel(SanPham sanPham) {
         return SanPhamViewModel.builder().id(sanPham.getId()).ma(sanPham.getMa()).ten(sanPham.getTen()).build();
     }
-
+    
     public static NhaSanXuatViewModel getNhaSanXuatViewModel(NhaSanXuat nhaSanXuat) {
         return NhaSanXuatViewModel.builder().id(nhaSanXuat.getId()).ma(nhaSanXuat.getMa()).ten(nhaSanXuat.getTen()).build();
     }
-
+    
     public static MauSacViewModel getMauSacViewModel(MauSac mauSac) {
         return MauSacViewModel.builder().id(mauSac.getId()).ma(mauSac.getMa()).ten(mauSac.getTen()).build();
     }
-
+    
     public static DongSanPhamViewModel getDongSanPhamViewModel(DongSP dongSP) {
         return DongSanPhamViewModel.builder().id(dongSP.getId()).ma(dongSP.getMa()).ten(dongSP.getTen()).build();
     }
-
+    
     public static ChiTietSanPhamViewModel getChiTietSanPhamViewModel(ChiTietSanPham chiTietSanPham) {
         return ChiTietSanPhamViewModel.builder().id(chiTietSanPham.getId()).
                 sanPham(getSanPhamViewModel(chiTietSanPham.getSanPham())).
@@ -119,30 +119,29 @@ public class ConvertViewModel {
                 giaNhap(chiTietSanPham.getGiaNhap()).moTa(chiTietSanPham.getMoTa()).namBH(chiTietSanPham.getNamBH()).
                 soLuongTon(chiTietSanPham.getSoLuongTon()).build();
     }
-
+    
     public static HoaDonViewModel getHoaDonViewModel(HoaDon hoaDon) {
         return HoaDonViewModel.builder().id(hoaDon.getId()).diaChi(hoaDon.getDiaChi()).ma(hoaDon.getMa())
                 .ngayTao(hoaDon.getNgayTao()).nhanVien(getNhanVienViewModel(hoaDon.getNhanVien())).tinhTrang(hoaDon.getTinhTrang()).build();
-
+        
     }
-
+    
     public static SanPhamDaChonViewModel getSanPhamDaChonViewModel(HoaDonchiTiet hoaDonchiTiet) {
         return SanPhamDaChonViewModel.builder().id(hoaDonchiTiet.getIdChiTietSP().getId()).
                 ma(hoaDonchiTiet.getIdChiTietSP().getSanPham().getMa()).ten(hoaDonchiTiet.getIdChiTietSP().getSanPham().getTen())
                 .donGia(hoaDonchiTiet.getIdChiTietSP().getGiaBan()).soLuong(hoaDonchiTiet.getSoLuong()).build();
     }
-
+    
     public static KhachHangViewModel getKhachHangViewModel(KhachHang khachHang) {
         return KhachHangViewModel.builder().id(khachHang.getId()).ma(khachHang.getMa()).ten(khachHang.getTen())
                 .tenDem(khachHang.getTenDem()).ho(khachHang.getHo()).diaChi(khachHang.getDiaChi()).thanhPho(khachHang.getThanhPho())
-                .quocGia(khachHang.getQuocGia()).ngaySinh(khachHang.getNgaySinh()).matKhau(khachHang.getMatKhau()).build();
-
+                .quocGia(khachHang.getQuocGia()).ngaySinh(khachHang.getNgaySinh()).matKhau(khachHang.getMatKhau()).soDT(khachHang.getSoDT()).build();
+        
     }
-
+    
     public static KhachHang getKhachHang(KhachHangViewModel khachHang) {
         return KhachHang.builder().id(khachHang.getId()).ma(khachHang.getMa()).ten(khachHang.getTen())
                 .tenDem(khachHang.getTenDem()).ho(khachHang.getHo()).diaChi(khachHang.getDiaChi()).thanhPho(khachHang.getThanhPho())
-                .quocGia(khachHang.getQuocGia()).ngaySinh(khachHang.getNgaySinh()).matKhau(khachHang.getMatKhau()).build();
-
+                .quocGia(khachHang.getQuocGia()).ngaySinh(khachHang.getNgaySinh()).matKhau(khachHang.getMatKhau()).soDT(khachHang.getSoDT()).build();
     }
 }

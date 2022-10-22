@@ -8,7 +8,7 @@ import com.mycompany.duanmaujava.DomainModels.ChucVu;
 import com.mycompany.duanmaujava.Repositories.ChucVuRepository;
 import com.mycompany.duanmaujava.Repositories.impl.ChucVuRepositoryImpl;
 import com.mycompany.duanmaujava.Services.ChucVuService;
-import com.mycompany.duanmaujava.ViewModels.ViewModelConvert.ConvertViewModel;
+import com.mycompany.duanmaujava.ViewModels.ViewModelConvert.ConvertClass;
 import com.mycompany.duanmaujava.ViewModels.ViewModelsClass.ChucVuViewModel;
 import java.util.List;
 
@@ -16,13 +16,13 @@ import java.util.List;
  *
  * @author acer
  */
-public class ChucVuServiceImpl implements ChucVuService {
+public class ChucVuServiceImpl  implements ChucVuService {
     
     private static final ChucVuRepository CHUC_VU_REPOSITORY = new ChucVuRepositoryImpl();
     
     @Override
     public List<ChucVuViewModel> getList() {
-        return CHUC_VU_REPOSITORY.getList().stream().map(t -> ConvertViewModel.getChucVuViewModel(t)).toList();
+        return CHUC_VU_REPOSITORY.getList().stream().map(t -> ConvertClass.getChucVuViewModel(t)).toList();
     }
     
     @Override
@@ -35,7 +35,7 @@ public class ChucVuServiceImpl implements ChucVuService {
         if (!CHUC_VU_REPOSITORY.checkSave(chucVu.getMa())) {
             return "Mã chức vụ đã tồn tại";
         }
-        return CHUC_VU_REPOSITORY.save(ConvertViewModel.getChucVu(chucVu)) ? "" : "Thêm thất bại";
+        return CHUC_VU_REPOSITORY.save(ConvertClass.getChucVu(chucVu)) ? "" : "Thêm thất bại";
     }
     
     @Override
@@ -43,7 +43,7 @@ public class ChucVuServiceImpl implements ChucVuService {
         if (!CHUC_VU_REPOSITORY.checkUpdate(chucVu.getMa(), chucVu.getId())) {
             return "Mã chức vụ đã tồn tại";
         }
-        return CHUC_VU_REPOSITORY.update(ConvertViewModel.getChucVu(chucVu)) ? "" : "Cập nhật thất bại";
+        return CHUC_VU_REPOSITORY.update(ConvertClass.getChucVu(chucVu)) ? "" : "Cập nhật thất bại";
     }
     
     @Override
@@ -51,6 +51,6 @@ public class ChucVuServiceImpl implements ChucVuService {
         if (!CHUC_VU_REPOSITORY.checkDelete(chucVu.getId())) {
             return " Chức vụ này đã tồn tại trong nhân viên";
         }
-        return CHUC_VU_REPOSITORY.delete(ConvertViewModel.getChucVu(chucVu)) ? "" : "Xóa thất bại";
+        return CHUC_VU_REPOSITORY.delete(ConvertClass.getChucVu(chucVu)) ? "" : "Xóa thất bại";
     }
 }

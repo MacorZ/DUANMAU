@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author acer
  */
-public interface NhanVienService {
+public abstract interface NhanVienService {
 
     List<NhanVienViewModel> getList();
 

@@ -116,4 +116,7 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     public List<ChiTietSanPham> getByTenSP(String ten) {
         return REPO_CTSP.getByTenSP(ten);
     }
+    
+    
+    
 }
